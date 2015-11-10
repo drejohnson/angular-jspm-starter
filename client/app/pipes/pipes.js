@@ -1,15 +1,9 @@
-System.register(['./upcase'], function(exports_1) {
-    var upcase_1;
+System.register([], function(exports_1) {
     var APP_PIPES;
     return {
-        setters:[
-            function (upcase_1_1) {
-                upcase_1 = upcase_1_1;
-            }],
+        setters:[],
         execute: function() {
-            APP_PIPES = [
-                upcase_1.ToUpperCase
-            ];
+            APP_PIPES = [];
             exports_1("default",APP_PIPES);
         }
     }

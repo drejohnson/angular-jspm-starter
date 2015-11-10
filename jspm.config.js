@@ -32,11 +32,11 @@ System.config({
 
   map: {
     "@reactivex/rxjs": "npm:@reactivex/rxjs@5.0.0-alpha.8",
-    "angular": "github:angular/bower-angular@1.4.7",
-    "angular-animate": "github:angular/bower-angular-animate@1.4.7",
+    "angular": "github:angular/bower-angular@1.5.0-beta.0",
+    "angular-animate": "github:angular/bower-angular-animate@1.5.0-beta.0",
     "angular-material": "github:angular/bower-material@1.0.0-rc2",
-    "angular-mocks": "npm:angular-mocks@1.4.7",
-    "angular-sanitize": "github:angular/bower-angular-sanitize@1.4.7",
+    "angular-mocks": "npm:angular-mocks@1.5.0-beta.0",
+    "angular-sanitize": "github:angular/bower-angular-sanitize@1.5.0-beta.0",
     "angular-ui-router": "github:angular-ui/ui-router@0.2.15",
     "autoprefixer": "npm:autoprefixer@6.1.0",
     "capaj/jspm-hot-reloader": "github:capaj/jspm-hot-reloader@0.3.0",
@@ -54,21 +54,21 @@ System.config({
     "typescript": "npm:typescript@1.8.0-dev.20151105",
     "zone.js": "npm:zone.js@0.5.8",
     "github:angular-ui/ui-router@0.2.15": {
-      "angular": "github:angular/bower-angular@1.4.7"
+      "angular": "github:angular/bower-angular@1.5.0-beta.0"
     },
-    "github:angular/bower-angular-animate@1.4.7": {
-      "angular": "github:angular/bower-angular@1.4.7"
+    "github:angular/bower-angular-animate@1.5.0-beta.0": {
+      "angular": "github:angular/bower-angular@1.5.0-beta.0"
     },
-    "github:angular/bower-angular-aria@1.4.7": {
-      "angular": "github:angular/bower-angular@1.4.7"
+    "github:angular/bower-angular-aria@1.5.0-beta.0": {
+      "angular": "github:angular/bower-angular@1.5.0-beta.0"
     },
-    "github:angular/bower-angular-sanitize@1.4.7": {
-      "angular": "github:angular/bower-angular@1.4.7"
+    "github:angular/bower-angular-sanitize@1.5.0-beta.0": {
+      "angular": "github:angular/bower-angular@1.5.0-beta.0"
     },
     "github:angular/bower-material@1.0.0-rc2": {
-      "angular": "github:angular/bower-angular@1.4.7",
-      "angular-animate": "github:angular/bower-angular-animate@1.4.7",
-      "angular-aria": "github:angular/bower-angular-aria@1.4.7",
+      "angular": "github:angular/bower-angular@1.5.0-beta.0",
+      "angular-animate": "github:angular/bower-angular-animate@1.5.0-beta.0",
+      "angular-aria": "github:angular/bower-angular-aria@1.5.0-beta.0",
       "css": "github:systemjs/plugin-css@0.1.19"
     },
     "github:capaj/jspm-hot-reloader@0.3.0": {
