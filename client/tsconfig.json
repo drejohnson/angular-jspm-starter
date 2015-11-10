@@ -1,0 +1,19 @@
+{
+	"compilerOptions": {
+    "target": "es5",
+		"module": "system",
+    "declaration": false,
+    "noImplicitAny": false,
+    "removeComments": true,
+    "noLib": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "sourceMap": true
+	},
+  "files": [
+		"./app/bootstrap.ts"
+	],
+	"exclude": [
+      "dist", "jspm_packages", "node_modules"
+    ]
+}

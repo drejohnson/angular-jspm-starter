@@ -1,0 +1,138 @@
+import fs from 'fs';
+import path from 'path';
+import gulp from 'gulp';
+import gulpLoadPlugins from 'gulp-load-plugins';
+import systemjsBuilder from 'systemjs-builder';
+import jspm from 'jspm';
+import sync from 'run-sequence';
+import serve from 'browser-sync';
+import modRewrite from 'connect-modrewrite';
+import del from 'del';
+import yargs from 'yargs';
+
+const $ = gulpLoadPlugins();
+const reload = () => serve.reload();
+const root = 'client';
+
+// helper method to resolveToApp paths
+const resolveTo = (resolvePath) => {
+	return (glob) => {
+		glob = glob || '';
+		return path.resolve(path.join(root, resolvePath, glob));
+	}
+};
+
+const resolveToApp = resolveTo('app'); // app/{glob}
+const resolveToComponents = resolveTo('app/components'); // app/components/{glob}
+
+// map of all our paths
+const paths = {
+	css: resolveToApp('**/*.css'),
+	html: [
+		resolveToApp('**/*.html'),
+		path.join(root, 'index.html')
+	],
+  static: path.join(root, 'static/**/*'),
+	blankTemplates: path.join(__dirname, 'generator', 'component/**/*.**'),
+	dist: path.join(__dirname, 'static/')
+};
+
+gulp.task('serve', () =>{
+	'use strict'
+	require('chokidar-socket-emitter')({port: 8081, path: 'client', relativeTo: 'client'})
+	serve({
+		port: process.env.PORT || 3000,
+		open: false,
+		files: [].concat(
+			[paths.css],
+			paths.html
+		),
+		server: {
+			baseDir: [root, root + '/static'],
+			// serve our jspm dependencies with the client folder
+			routes: {
+				'/jspm.config.js': './jspm.config.js',
+				'/jspm_packages': './jspm_packages'
+			}
+		},
+    middleware: [
+      modRewrite([
+        '^([^.]+)$ /index.html [L]'
+      ])
+    ]
+	});
+});
+
+function serveDist() {
+  serve({
+    port: process.env.PORT || 3000,
+    open: false,
+    notify: false,
+    logPrefix: 'FEDS',
+    // Run as an https by uncommenting 'https: true'
+    // Note: this uses an unsigned certificate which on first access
+    // will present a certificate warning in the browser.
+    // https: true,
+    server: 'static',
+    baseDir: 'static',
+    middleware: [
+      modRewrite([
+        '^([^.]+)$ /index.html [L]'
+      ])
+    ]
+  });
+}
+
+gulp.task('build', () => {
+	const Builder = systemjsBuilder;
+	const builder = new Builder(root, './jspm.config.js');
+	const dist = path.join(paths.dist + 'build.js');
+
+	return builder.buildStatic(resolveToApp('bootstrap.ts'), dist, {
+		minify: true,
+		mangle: false,
+	})
+	.then(() => {
+		// Also create a fully annotated minified copy
+		return gulp.src(dist)
+			// .pipe($.ngAnnotate())
+			//.pipe(uglify())
+			.pipe($.rename('bundle.js'))
+			.pipe(gulp.dest(paths.dist))
+	})
+	.then(() => {
+		// Inject minified script into index
+		return gulp.src('client/index.html')
+			.pipe($.htmlReplace({
+				'js': 'bundle.js'
+			}))
+			.pipe(gulp.dest(paths.dist));
+	});
+});
+
+gulp.task('component', () => {
+  const cap = (val) => {
+    return val.charAt(0).toUpperCase() + val.slice(1);
+  };
+  const camel = (val) => {
+    return val.replace( /-([a-z])/ig, ( all, letter ) => letter.toUpperCase());
+  };
+  const name = yargs.argv.name;
+  const upCaseName = cap(name);
+  const camelCaseName = camel(upCaseName);
+  const parentPath = yargs.argv.parent || '';
+  const destPath = path.join(resolveToComponents(), parentPath, name);
+
+  return gulp.src(paths.blankTemplates)
+  .pipe($.template({
+    name,
+    upCaseName,
+    camelCaseName
+  }))
+  .pipe($.rename((path) => {
+    path.basename = path.basename.replace('temp', name);
+  }))
+  .pipe(gulp.dest(destPath));
+});
+
+gulp.task('default', ['serve'])
