@@ -1,4 +1,4 @@
-@import '../../styles/styles.css';
+@import '../../styles/base/variables.css';
 
 sidenav {
   @media (--medium) {
@@ -32,6 +32,10 @@ sidenav {
     a {
       text-decoration: none;
     }
+    .nav-container {
+      min-height: 63px;
+    }
+    .nav-label,
     .nav-item {
       color: var(--brandWhite);
       font-weight: normal;
@@ -42,7 +46,7 @@ sidenav {
       align-items: flex-start;
       padding: var(--lg-pad) var(--sm-pad);
       border-bottom: 1px solid #252525;
-
+      cursor: pointer;
       transition-property: background-color;
       transition-duration: .5s;
       transition-timing-function: linear;

@@ -1,4 +1,4 @@
-import {IPageTitleService} from './page-title-service-interface'
+import {IPageTitleService} from './page-title-interface'
 
 class PageTitleService implements IPageTitleService {
 	private _title: string;

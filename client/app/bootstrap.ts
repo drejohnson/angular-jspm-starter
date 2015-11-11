@@ -38,6 +38,7 @@ const UNIVERSAL_BINDINGS = [
  * Bootstrap our Angular app with a top level component `App` and inject
  * our Services and Providers into Angular's dependency injection
  */
+
 bootstrap(App, [
   UNIVERSAL_BINDINGS
 ]);

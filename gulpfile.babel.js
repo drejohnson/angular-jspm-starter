@@ -30,7 +30,9 @@ const resolveToComponents = resolveTo('app/components'); // app/components/{glob
 
 // map of all paths
 const paths = {
-  css: resolveToApp('**/_*.css'), // stylesheets
+	app: [resolveToApp('**/*.ts')],
+  css: [resolveToApp('**/_*.css')], // stylesheets
+	cssCompiled: [resolveToApp('**/*.css')],
   html: [
     resolveToApp('**/*.html'),
     path.join(root, 'index.html')
@@ -40,25 +42,30 @@ const paths = {
   dist: path.join(__dirname, 'static/')
 };
 
-gulp.task('styles', () => styleTask('./', ['**/_*.css']));
+// gulp.task('styles', () => styleTask('./', ['**/_*.css']));
 
-gulp.task('serve', gulp.series('styles', serveDev));
+gulp.task('serve', gulp.series(
+	styles,
+	gulp.parallel(serveDev, watch)
+));
 
 gulp.task('serve:dist', gulp.series(
   clean,
-  gulp.parallel('styles', build, staticFiles),
+  gulp.parallel(styles, build, staticFiles),
   serveDist
 ));
 
 gulp.task('dist', gulp.series(
   clean,
-  gulp.parallel('styles', staticFiles),
+  gulp.parallel(styles, staticFiles),
   build
 ));
 
 gulp.task(clean);
+gulp.task(styles);
 gulp.task(staticFiles);
 gulp.task(build);
+gulp.task(watch);
 gulp.task(component);
 
 
@@ -72,24 +79,42 @@ function clean() {
 
 // Style tasks
 // Compile and Automatically Prefix Stylesheets
-function styleTask(stylesPath, srcs) {
-  const processors = [
+// function styleTask(stylesPath, srcs) {
+//   const processors = [
+//     precss(),
+//     lost(),
+//     calc(),
+//     autoprefixer({browsers: ['last 2 version']})
+//   ];
+//   return gulp.src(srcs.map((src) => {
+//     return path.join(root + '/app', stylesPath, src);
+//   }))
+//   .pipe($.newer(stylesPath, {extension: '.css'}))
+// 	.pipe($.sourcemaps.init())
+//   .pipe($.postcss(processors).on('error', console.error.bind(console)))
+//   .pipe($.rename((filepath) => {
+//     filepath.basename = path.basename(filepath.dirname);
+//   }))
+// 	.pipe($.sourcemaps.write('.'))
+//   .pipe(gulp.dest(path.join(root, 'app')));
+// }
+
+function styles() {
+	const processors = [
     precss(),
     lost(),
     calc(),
     autoprefixer({browsers: ['last 2 version']})
   ];
-  return gulp.src(srcs.map((src) => {
-    return path.join(root + '/app', stylesPath, src);
-  }))
-  .pipe($.newer(stylesPath, {extension: '.css'}))
-	.pipe($.sourcemaps.init())
-  .pipe($.postcss(processors).on('error', console.error.bind(console)))
-  .pipe($.rename((filepath) => {
-    filepath.basename = path.basename(filepath.dirname);
-  }))
-	.pipe($.sourcemaps.write('.'))
-  .pipe(gulp.dest(path.join(root, 'app')));
+  return gulp.src(paths.css)
+	  .pipe($.newer(resolveToApp('**')))
+		.pipe($.sourcemaps.init())
+	  .pipe($.postcss(processors).on('error', console.error.bind(console)))
+	  .pipe($.rename((filepath) => {
+	    filepath.basename = path.basename(filepath.dirname);
+	  }))
+		.pipe($.sourcemaps.write('.'))
+	  .pipe(gulp.dest(path.join(root, 'app')));
 }
 
 function staticFiles() {
@@ -132,7 +157,8 @@ function serveDev() {
 		port: process.env.PORT || 3000,
 		open: false,
 		files: [].concat(
-			[paths.css],
+			paths.app,
+			paths.css,
 			paths.html
 		),
 		server: {
@@ -170,6 +196,16 @@ function serveDist() {
       ])
     ]
   });
+}
+
+// Rerun the task when a file changes
+function watch() {
+  // gulp.watch(paths.html).on('change', reload);
+  // gulp.watch(paths.css).on('change', gulp.series(styles, reload));
+  // gulp.watch(paths.app).on('change', reload);
+	gulp.watch(paths.html, reload);
+	gulp.watch(paths.app, reload);
+	gulp.watch(paths.css, gulp.series(styles, reload));
 }
 
 function component() {

@@ -1,4 +1,4 @@
-import {IPageMetaService} from './page-meta-service-interface'
+import {IPageMetaService} from './page-meta-interface'
 
 class PageMetaService implements IPageMetaService {
   private _metaDescription: string;

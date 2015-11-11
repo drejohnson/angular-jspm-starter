@@ -26,7 +26,7 @@ angular.module('home.config', [])
   selector: 'home',
   directives: [],
   providers: ['home.config'],
-  // bindings: [STYLES],
+  bindings: [STYLES],
   controllerAs: 'vm',
   // include our .html and .css file
   styles: [],

@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "scripts": {
     "test": "karma start",
+    "serve": "gulp serve",
+    "serve-dist": "gulp serve:dist",
+    "dist": "gulp dist",
     "postinstall": "jspm install & tsd reinstall -s -o"
   },
   "keywords": [
@@ -20,15 +23,16 @@
     "configFile": "jspm.config.js",
     "dependencies": {
       "@reactivex/rxjs": "npm:@reactivex/rxjs@^5.0.0-alpha.8",
-      "angular": "github:angular/bower-angular@^1.4.7",
-      "angular-animate": "github:angular/bower-angular-animate@^1.4.7",
+      "angular": "github:angular/bower-angular@^1.5.0-beta.0",
+      "angular-animate": "github:angular/bower-angular-animate@^1.5.0-beta.0",
       "angular-material": "github:angular/bower-material@^1.0.0-rc2",
-      "angular-mocks": "npm:angular-mocks@^1.4.7",
-      "angular-sanitize": "github:angular/bower-angular-sanitize@^1.4.7",
+      "angular-mocks": "npm:angular-mocks@^1.5.0-beta.0",
+      "angular-sanitize": "github:angular/bower-angular-sanitize@^1.5.0-beta.0",
       "angular-ui-router": "github:angular-ui/ui-router@^0.2.15",
       "capaj/jspm-hot-reloader": "github:capaj/jspm-hot-reloader@^0.3.0",
       "css": "github:systemjs/plugin-css@^0.1.19",
       "es6-shim": "github:es-shims/es6-shim@^0.33.10",
+      "jspm-loader-css": "npm:jspm-loader-css@^1.0.1-beta1",
       "lost": "npm:lost@^6.6.2",
       "ng-forward": "npm:ng-forward@^0.0.1-alpha.8",
       "postcss": "npm:postcss@^5.0.10",
@@ -52,16 +56,14 @@
       }
     }
   },
-  "dependencies": {
-    "babel": "^6.0.15",
-    "babel-preset-es2015": "^6.0.15"
-  },
+  "dependencies": {},
   "devDependencies": {
     "autoprefixer": "^6.0.3",
-    "babel-core": "^6.0.20",
+    "babel-core": "^6.1.4",
+    "babel-preset-es2015": "^6.1.4",
     "browser-sync": "^2.9.11",
     "chai": "^3.3.0",
-    "chokidar-socket-emitter": "^0.1.1",
+    "chokidar-socket-emitter": "^0.3.0",
     "connect-modrewrite": "^0.8.2",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-cli": "github:gulpjs/gulp-cli#4.0",

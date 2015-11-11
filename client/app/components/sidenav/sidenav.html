@@ -6,9 +6,28 @@
   </header>
   <md-content flex class="md-hue-1">
     <nav class="nav" role="navigation">
-      <a class="nav-item" ng-repeat="item in vm.navigation" ui-sref="{{::item.state}}" ui-sref-active="active">
-        {{ item.label }}
-      </a>
+      <span
+        class="nav-container"
+        ng-if="vm.section[0].type === 'toggle'"
+        ng-class="{'': !toggled, 'opened active': toggled}"
+        flex layout="column">
+        <a
+          class="nav-label"
+        	ng-click="toggled=!toggled"
+        	flex layout="row">
+          {{ ::vm.section[0].name }}
+          <md-icon ng-if="!toggled" aria-label="Menu" class="material-icons">expand_more</md-icon>
+	        <md-icon ng-if="toggled" aria-label="Close" class="material-icons">expand_less</md-icon>
+        </a>
+        <a
+          class="nav-item"
+          ng-if="toggled"
+          ng-repeat="item in vm.section[0].routes"
+          ui-sref="{{::item.state}}"
+          ui-sref-active="active">
+          {{ ::item.name }}
+        </a>
+      </span>
       <!-- <section ng-repeat="section in vm.menu.sections" ui-sref-active="active">
         <menu-toggle class="menu-toggle" section="section" ng-if="section.type === 'toggle'"></menu-toggle>
         <menu-link class="menu-link" section="section" ng-if="section.type === 'link'"></menu-link>

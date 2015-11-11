@@ -8,12 +8,16 @@
     "noLib": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "sourceMap": true
+		"experimentalAsyncFunctions": true,
+		"inlineSourceMap": true
 	},
   "files": [
 		"./app/bootstrap.ts"
 	],
 	"exclude": [
-      "dist", "jspm_packages", "node_modules"
-    ]
+		"gulpfile.babel.js",
+		"dist",
+		"client/jspm_packages",
+		"node_modules"
+  ]
 }
