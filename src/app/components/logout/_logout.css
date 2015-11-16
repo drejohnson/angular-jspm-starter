@@ -1,5 +1,5 @@
 @import '../../styles/base/variables.css';
 
-<%= name %> {
+logout {
   color: inherit;
 }

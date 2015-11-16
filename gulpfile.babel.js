@@ -15,7 +15,7 @@ import yargs from 'yargs';
 
 const $ = gulpLoadPlugins();
 const reload = () => serve.reload();
-const root = 'client';
+const root = 'src';
 
 // helper method to resolveToApp paths
 const resolveTo = (resolvePath) => {
@@ -141,7 +141,7 @@ function build() {
 	})
 	.then(() => {
 		// Inject minified script into index
-		return gulp.src('client/index.html')
+		return gulp.src('src/index.html')
 			.pipe($.htmlReplace({
 				'js': 'build.js'
 			}))
@@ -152,7 +152,7 @@ function build() {
 // Browser-sync
 function serveDev() {
 	'use strict'
-	require('chokidar-socket-emitter')({port: 8081, path: 'client', relativeTo: 'client'})
+	require('chokidar-socket-emitter')({port: 8081, path: 'src', relativeTo: 'src'})
 	serve({
 		port: process.env.PORT || 3000,
 		open: false,
@@ -163,7 +163,7 @@ function serveDev() {
 		),
 		server: {
 			baseDir: [root, root + '/static'],
-			// serve our jspm dependencies with the client folder
+			// serve our jspm dependencies with the src folder
 			routes: {
 				'/jspm.config.js': './jspm.config.js',
 				'/jspm_packages': './jspm_packages'

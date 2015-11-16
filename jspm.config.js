@@ -51,6 +51,7 @@ System.config({
     "postcss-calc": "npm:postcss-calc@5.0.0",
     "precss": "npm:precss@1.3.0",
     "reflect-metadata": "npm:reflect-metadata@0.1.2",
+    "satellizer": "npm:satellizer@0.13.0",
     "text": "github:systemjs/plugin-text@0.0.3",
     "ts": "github:frankwallis/plugin-typescript@2.2.0",
     "typescript": "npm:typescript@1.8.0-dev.20151105",

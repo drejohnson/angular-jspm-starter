@@ -1,0 +1,52 @@
+@import '../../styles/base/variables.css';
+@import '../../common/styles/social-buttons.css';
+
+login {
+  color: inherit;
+  .login-card {
+    background-color: var(--brandDarkGrey);
+    width: 400px;
+    md-input-container {
+      .md-input {
+        text-shadow: none;
+      }
+      &:not(.md-input-invalid).md-input-focused .md-input {
+        border-color: var(--brandRed);
+      }
+    }
+    .social-button {
+      display: block;
+      width: 300px;
+      height: 40px;
+      margin: var(--md-pad) auto 0;
+      border-radius: 300px;
+    }
+    h1 {
+      font-size: calc(18/16)rem;
+      text-align: center;
+    }
+    .login-or {
+      text-align: center;
+      text-transform: uppercase;
+      min-width: 300px;
+      margin: var(--md-pad) 0;
+      position: relative;
+
+      span {
+        position: relative;
+        top: 5px;
+      }
+
+      &:before,
+      &:after {
+        width: 40%;
+        height: 1px;
+        background: #ccc;
+        content: '.';
+        text-indent: -9999em;
+        overflow: hidden;
+        display: inline-block;
+      }
+    }
+  }
+}

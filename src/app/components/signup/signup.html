@@ -1,0 +1,48 @@
+<md-content class="md-padding" layout="row" layout-align="center center">
+  <md-card class="login-card">
+    <md-card-content>
+      <md-button
+        ng-click="vm.authenticate('facebook')"
+				class="social-button facebook">
+				<span>Sign In with Facebook</span>
+			</md-button>
+			<md-button
+        ng-click="vm.authenticate('twitter')"
+				class="social-button twitter">
+				<span>Sign In with Twitter</span>
+			</md-button>
+      <md-button
+        ng-click="vm.authenticate('google')"
+				class="social-button google">
+				<span>Sign In with Google</span>
+			</md-button>
+      <div class="login-or">
+        <span>
+        or
+        </span>
+      </div>
+      <h1>Use your email address to login</h1>
+      <form method="post" ng-submit="vm.signup()" name="signupForm">
+        <md-input-container
+          ng-class="{ 'has-error' : signupForm.displayName.$invalid && signupForm.displayName.$dirty }"
+          md-no-float
+          class="md-block">
+          <input ng-model="vm.user.displayName" name="displayName" placeholder="Name" ng-required="true">
+        </md-input-container>
+        <md-input-container
+          ng-class="{ 'has-error' : signupForm.email.$invalid && signupForm.email.$dirty }"
+          md-no-float
+          class="md-block">
+          <input type="email" name="email" ng-model="vm.user.email" placeholder="Email" ng-required="true">
+        </md-input-container>
+        <md-input-container md-no-float class="md-block">
+          <input ng-model="vm.user.password" placeholder="Password" ng-required="true">
+        </md-input-container>
+        <md-input-container md-no-float class="md-block">
+          <input ng-model="vm.user.password" placeholder="Password" ng-required="true">
+        </md-input-container>
+        <md-button type="submit" ng-disabled="vm.loginForm.$invalid">Log in</md-button>
+      </form>
+    </md-card-content>
+  </md-card>
+</md-content>

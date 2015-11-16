@@ -1,0 +1,96 @@
+:root {
+  /* Font Families*/
+  /* Defaults */
+  /* Typography */
+}
+.social-button {
+  padding: 0 10px;
+}
+.social-button:not([disabled]):hover
+	.social-button:not([disabled]):focus {
+  background-color: inherit;
+}
+.social-button.facebook {
+  background-color: #3b5999;
+}
+.social-button.facebook:not([disabled]):hover, .social-button.facebook:not([disabled]):focus {
+  background-color: #3b5999;
+}
+.social-button.twitter {
+  background-color: #55acee;
+}
+.social-button.twitter:not([disabled]):hover, .social-button.twitter:not([disabled]):focus {
+  background-color: #55acee;
+}
+.social-button.google {
+  background-color: #dc4e41;
+}
+.social-button.google:not([disabled]):hover, .social-button.google:not([disabled]):focus {
+  background-color: #dc4e41;
+}
+.social-button .social-item {
+  color: #fff;
+  font-size: 1.5rem;
+  width: 24px;
+  height: 24px;
+  margin: 0;
+}
+.social-button .social-item a {
+  color: #ecf0f1;
+  text-decoration: none;
+}
+
+login {
+  color: inherit;
+}
+
+login .login-card {
+  background-color: #212121;
+  width: 400px;
+}
+
+login .login-card md-input-container .md-input {
+  text-shadow: none;
+}
+
+login .login-card md-input-container:not(.md-input-invalid).md-input-focused .md-input {
+  border-color: #c0392b;
+}
+
+login .login-card .social-button {
+  display: block;
+  width: 300px;
+  height: 40px;
+  margin: 1rem auto 0;
+  border-radius: 300px;
+}
+
+login .login-card h1 {
+  font-size: 1.125rem;
+  text-align: center;
+}
+
+login .login-card .login-or {
+  text-align: center;
+  text-transform: uppercase;
+  min-width: 300px;
+  margin: 1rem 0;
+  position: relative;
+}
+
+login .login-card .login-or span {
+  position: relative;
+  top: 5px;
+}
+
+login .login-card .login-or:before, login .login-card .login-or:after {
+  width: 40%;
+  height: 1px;
+  background: #ccc;
+  content: '.';
+  text-indent: -9999em;
+  overflow: hidden;
+  display: inline-block;
+}
+
+/*# sourceMappingURL=login.css.map */
