@@ -35,7 +35,7 @@ System.config({
     "@reactivex/rxjs": "npm:@reactivex/rxjs@5.0.0-alpha.8",
     "angular": "github:angular/bower-angular@1.5.0-beta.0",
     "angular-animate": "github:angular/bower-angular-animate@1.5.0-beta.0",
-    "angular-material": "github:angular/bower-material@1.0.0-rc2",
+    "angular-material": "github:angular/bower-material@1.0.0-rc4",
     "angular-mocks": "npm:angular-mocks@1.5.0-beta.0",
     "angular-sanitize": "github:angular/bower-angular-sanitize@1.5.0-beta.0",
     "angular-ui-router": "github:angular-ui/ui-router@0.2.15",
@@ -54,7 +54,7 @@ System.config({
     "satellizer": "npm:satellizer@0.13.0",
     "text": "github:systemjs/plugin-text@0.0.3",
     "ts": "github:frankwallis/plugin-typescript@2.2.0",
-    "typescript": "npm:typescript@1.8.0-dev.20151105",
+    "typescript": "npm:typescript@1.6.2",
     "zone.js": "npm:zone.js@0.5.8",
     "github:angular-ui/ui-router@0.2.15": {
       "angular": "github:angular/bower-angular@1.5.0-beta.0"
@@ -68,7 +68,7 @@ System.config({
     "github:angular/bower-angular-sanitize@1.5.0-beta.0": {
       "angular": "github:angular/bower-angular@1.5.0-beta.0"
     },
-    "github:angular/bower-material@1.0.0-rc2": {
+    "github:angular/bower-material@1.0.0-rc4": {
       "angular": "github:angular/bower-angular@1.5.0-beta.0",
       "angular-animate": "github:angular/bower-angular-animate@1.5.0-beta.0",
       "angular-aria": "github:angular/bower-angular-aria@1.5.0-beta.0",
@@ -80,7 +80,7 @@ System.config({
       "weakee": "npm:weakee@0.9.1"
     },
     "github:frankwallis/plugin-typescript@2.2.0": {
-      "typescript": "npm:typescript@1.8.0-dev.20151105"
+      "typescript": "npm:typescript@1.6.2"
     },
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
@@ -135,19 +135,8 @@ System.config({
     "github:jspm/nodelibs-vm@0.1.0": {
       "vm-browserify": "npm:vm-browserify@0.0.4"
     },
-    "npm:@reactivex/rxjs@5.0.0-alpha.7": {
-      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
-      "path": "github:jspm/nodelibs-path@0.1.0",
-      "process": "github:jspm/nodelibs-process@0.1.2"
-    },
     "npm:@reactivex/rxjs@5.0.0-alpha.8": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
-      "module": "github:jspm/nodelibs-module@0.1.0",
-      "path": "github:jspm/nodelibs-path@0.1.0",
-      "process": "github:jspm/nodelibs-process@0.1.2"
-    },
-    "npm:amdefine@1.0.0": {
-      "fs": "github:jspm/nodelibs-fs@0.1.2",
       "module": "github:jspm/nodelibs-module@0.1.0",
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
@@ -258,7 +247,7 @@ System.config({
       "os": "github:jspm/nodelibs-os@0.1.0",
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2",
-      "source-map": "npm:source-map@0.4.4",
+      "source-map": "npm:source-map@0.5.3",
       "url": "github:jspm/nodelibs-url@0.1.0",
       "util": "github:jspm/nodelibs-util@0.1.0"
     },
@@ -485,7 +474,7 @@ System.config({
       "lodash.isarray": "npm:lodash.isarray@3.0.4"
     },
     "npm:lost@6.6.2": {
-      "object-assign": "npm:object-assign@2.0.0",
+      "object-assign": "npm:object-assign@4.0.1",
       "postcss": "npm:postcss@5.0.10"
     },
     "npm:miller-rabin@4.0.0": {
@@ -497,7 +486,7 @@ System.config({
       "path": "github:jspm/nodelibs-path@0.1.0"
     },
     "npm:ng-forward@0.0.1-alpha.8": {
-      "@reactivex/rxjs": "npm:@reactivex/rxjs@5.0.0-alpha.7",
+      "@reactivex/rxjs": "npm:@reactivex/rxjs@5.0.0-alpha.8",
       "crypto": "github:jspm/nodelibs-crypto@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2",
       "reflect-metadata": "npm:reflect-metadata@0.1.2"
@@ -712,10 +701,6 @@ System.config({
       "inherits": "npm:inherits@2.0.1",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:source-map@0.4.4": {
-      "amdefine": "npm:amdefine@1.0.0",
-      "process": "github:jspm/nodelibs-process@0.1.2"
-    },
     "npm:source-map@0.5.3": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
@@ -738,7 +723,7 @@ System.config({
       "assert": "github:jspm/nodelibs-assert@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:typescript@1.8.0-dev.20151105": {
+    "npm:typescript@1.6.2": {
       "tty": "github:jspm/nodelibs-tty@0.1.0"
     },
     "npm:url@0.10.3": {

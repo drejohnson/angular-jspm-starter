@@ -26,7 +26,7 @@
       "@reactivex/rxjs": "npm:@reactivex/rxjs@^5.0.0-alpha.8",
       "angular": "github:angular/bower-angular@^1.5.0-beta.0",
       "angular-animate": "github:angular/bower-angular-animate@^1.5.0-beta.0",
-      "angular-material": "github:angular/bower-material@^1.0.0-rc2",
+      "angular-material": "github:angular/bower-material@^1.0.0-rc4",
       "angular-mocks": "npm:angular-mocks@^1.5.0-beta.0",
       "angular-sanitize": "github:angular/bower-angular-sanitize@^1.5.0-beta.0",
       "angular-ui-router": "github:angular-ui/ui-router@^0.2.15",
@@ -42,20 +42,13 @@
       "reflect-metadata": "npm:reflect-metadata@^0.1.2",
       "satellizer": "npm:satellizer@^0.13.0",
       "text": "github:systemjs/plugin-text@^0.0.3",
-      "ts": "github:frankwallis/plugin-typescript@^2.2.0",
+      "ts": "github:frankwallis/plugin-typescript@^2.2.2",
       "zone.js": "npm:zone.js@^0.5.8"
     },
     "devDependencies": {
       "capaj/jspm-hot-reloader": "github:capaj/jspm-hot-reloader@^0.3.0",
       "clean-css": "npm:clean-css@^3.4.6",
-      "typescript": "npm:typescript@1.8.0-dev.20151105"
-    },
-    "overrides": {
-      "github:frankwallis/plugin-typescript@2.2.0": {
-        "dependencies": {
-          "typescript": "npm:typescript@1.8.0-dev.20151105"
-        }
-      }
+      "typescript": "npm:typescript@1.6.2"
     }
   },
   "dependencies": {
