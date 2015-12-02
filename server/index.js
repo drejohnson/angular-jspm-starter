@@ -63,15 +63,15 @@ app.use(cors());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(expressValidator());
-app.use(methodOverride());
-app.use(cookieParser());
-app.use(session({
-  resave: true,
-  saveUninitialized: true,
-  secret: config.TOKEN_SECRET,
-  // store: new MongoStore.session({ url: config.MONGO_URI, autoReconnect: true })
-}));
+// app.use(expressValidator());
+// app.use(methodOverride());
+// app.use(cookieParser());
+// app.use(session({
+//   resave: true,
+//   saveUninitialized: true,
+//   secret: config.TOKEN_SECRET,
+//   // store: new MongoStore.session({ url: config.MONGO_URI, autoReconnect: true })
+// }));
 // app.use(lusca({
 //   csrf: true,
 //   xframe: 'SAMEORIGIN',

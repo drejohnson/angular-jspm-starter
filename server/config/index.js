@@ -9,11 +9,11 @@ export default {
     MONGO_URI: process.env.MONGODB || process.env.MONGOLAB_URI || 'mongodb://localhost:27017/dottv',
     // OAuth 2.0
     FACEBOOK_SECRET: process.env.FACEBOOK_SECRET || '',
-    GOOGLE_SECRET: process.env.GOOGLE_SECRET || '',
+    GOOGLE_SECRET: process.env.GOOGLE_SECRET || '4wFh0o2hckdi5FHTScgIvSEU',
 
     // OAuth 1.0
-    TWITTER_KEY: process.env.TWITTER_KEY || '',
-    TWITTER_SECRET: process.env.TWITTER_SECRET || ''
+    TWITTER_KEY: process.env.TWITTER_KEY || '20HIuAy6nVIgPtWZh92PPf9jn',
+    TWITTER_SECRET: process.env.TWITTER_SECRET || '2Z7IHxldIYaj0Fc5YxQFfh8Z1RtIXfJn1cHlO24EmMwUeAWpgS'
   },
   production: {
     isProduction: true,
@@ -25,10 +25,10 @@ export default {
     MONGO_URI: process.env.MONGODB || process.env.MONGOLAB_URI || 'mongodb://localhost:27017/dottv',
     // OAuth 2.0
     FACEBOOK_SECRET: process.env.FACEBOOK_SECRET || '',
-    GOOGLE_SECRET: process.env.GOOGLE_SECRET || '',
+    GOOGLE_SECRET: process.env.GOOGLE_SECRET || '4wFh0o2hckdi5FHTScgIvSEU',
 
     // OAuth 1.0
-    TWITTER_KEY: process.env.TWITTER_KEY || '',
-    TWITTER_SECRET: process.env.TWITTER_SECRET || ''
+    TWITTER_KEY: process.env.TWITTER_KEY || '20HIuAy6nVIgPtWZh92PPf9jn',
+    TWITTER_SECRET: process.env.TWITTER_SECRET || '2Z7IHxldIYaj0Fc5YxQFfh8Z1RtIXfJn1cHlO24EmMwUeAWpgS'
   }
 }[process.env.NODE_ENV || 'development'];

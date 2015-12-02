@@ -1,14 +1,21 @@
 import 'angular';
-import { Component, Inject } from 'ng-forward';
-import APP_COMPONENTS from '../components';
+import { Component, StateConfig, Inject } from 'ng-forward';
 import APP_PIPES from '../../pipes/pipes';
 import { OnConfig, OnRun } from '../../core/blocks/blocks';
 
+import Toolbar from '../toolbar/toolbar';
+import Sidenav from '../sidenav/sidenav';
+
+import Home from '../home/home';
+import Connect from '../connect/connect';
+import Login from '../login/login';
+import Logout from '../logout/logout';
+import Signup from '../signup/signup';
+import Profile from '../profile/profile';
+
 import STYLES from './app.css!';
 
-const LOG = new WeakMap();
-
-angular.module('app.config', ['ui.router', 'ngMaterial'])
+angular.module('app.core', [])
   .run(OnRun)
   .config(OnConfig);
 
@@ -20,8 +27,8 @@ angular.module('app.config', ['ui.router', 'ngMaterial'])
 @Component({
   selector: 'app',
   pipes: [APP_PIPES],
-  directives: [APP_COMPONENTS],
-  providers: ['app.config'],
+  directives: [Sidenav, Toolbar],
+  providers: ['app.core'],
   bindings: [STYLES],
   controllerAs: 'vm',
   // include our .html and .css file
@@ -31,17 +38,20 @@ angular.module('app.config', ['ui.router', 'ngMaterial'])
      <sidenav layout="row"></sidenav>
      <div layout="column" flex>
        <toolbar></toolbar>
-       <md-content layout="column" flex layout-padding ui-view></md-content>
+       <md-content layout="column" flex ng-outlet></md-content>
      </div>
    </div>
   `
 })
+@StateConfig([
+  { name: 'home', url: '/', component: Home },
+  { name: 'connect', url: '/connect', component: Connect }
+])
 @Inject('$log')
 export class App {
   title: string;
-  constructor($log) {
+  constructor(public $log) {
     this.title = 'App';
-    LOG.set(this, $log);
-    LOG.get(this).log(`${this.title} component`);
+    this.$log.log(`${this.title} component`);
   }
 }

@@ -49,8 +49,14 @@ angular.module('login.config', ['ui.router'])
 export default class Login {
   title: string;
   user: any;
+  email: string;
+  password: string;
   constructor($log, $location, $auth, $mdToast) {
     this.title = 'Login';
+    this.user = {
+      email: this.email,
+      password: this.password
+    };
     LOG.set(this, $log);
     LOCATION.set(this, $location);
     AUTH.set(this, $auth);
