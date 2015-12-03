@@ -5,11 +5,10 @@ node:
   - mongo
   - redis
   ports:
-  - "8080"
+  - "8080:8080"
   environment:
   - NODE_ENV=production
 mongo:
-  restart: always
   image: mongo
   ports:
   - "27017:27017"
@@ -17,7 +16,7 @@ redis:
   image: redis
   ports:
   - "6379:6379"
-loadb:
+nginxproxy:
   image: jwilder/nginx-proxy
   environment:
   - DOCKER_CERT_PATH=/certs

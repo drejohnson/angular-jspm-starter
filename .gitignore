@@ -7,3 +7,4 @@ jspm_packages
 .settings
 *.log
 dist/
+$DOCKER_CERT_PATH
