@@ -1,9 +1,7 @@
-import fs from 'fs';
 import path from 'path';
 import gulp from 'gulp';
 import gulpLoadPlugins from 'gulp-load-plugins';
 import systemjsBuilder from 'systemjs-builder';
-import sync from 'run-sequence';
 import serve from 'browser-sync';
 import modRewrite from 'connect-modrewrite';
 import del from 'del';
@@ -19,10 +17,10 @@ const root = 'src';
 
 // helper method to resolveToApp paths
 const resolveTo = (resolvePath) => {
-	return (glob) => {
-		glob = glob || '';
-		return path.resolve(path.join(root, resolvePath, glob));
-	}
+  return (glob) => {
+    glob = glob || '';
+    return path.resolve(path.join(root, resolvePath, glob));
+  };
 };
 
 const resolveToApp = resolveTo('app'); // app/{glob}
@@ -30,9 +28,9 @@ const resolveToComponents = resolveTo('app/components'); // app/components/{glob
 
 // map of all paths
 const paths = {
-	app: [resolveToApp('**/*.ts')],
+  app: [resolveToApp('**/*.ts')],
   css: [resolveToApp('**/_*.css')], // stylesheets
-	cssCompiled: [resolveToApp('**/*.css')],
+  cssCompiled: [resolveToApp('**/*.css')],
   html: [
     resolveToApp('**/*.html'),
     path.join(root, 'index.html')
@@ -45,8 +43,8 @@ const paths = {
 // gulp.task('styles', () => styleTask('./', ['**/_*.css']));
 
 gulp.task('serve', gulp.series(
-	styles,
-	gulp.parallel(serveDev, watch)
+  styles,
+  gulp.parallel(serveDev, watch)
 ));
 
 gulp.task('serve:dist', gulp.series(
@@ -77,104 +75,78 @@ function clean() {
   return del([paths.dist]);
 }
 
-// Style tasks
-// Compile and Automatically Prefix Stylesheets
-// function styleTask(stylesPath, srcs) {
-//   const processors = [
-//     precss(),
-//     lost(),
-//     calc(),
-//     autoprefixer({browsers: ['last 2 version']})
-//   ];
-//   return gulp.src(srcs.map((src) => {
-//     return path.join(root + '/app', stylesPath, src);
-//   }))
-//   .pipe($.newer(stylesPath, {extension: '.css'}))
-// 	.pipe($.sourcemaps.init())
-//   .pipe($.postcss(processors).on('error', console.error.bind(console)))
-//   .pipe($.rename((filepath) => {
-//     filepath.basename = path.basename(filepath.dirname);
-//   }))
-// 	.pipe($.sourcemaps.write('.'))
-//   .pipe(gulp.dest(path.join(root, 'app')));
-// }
-
 function styles() {
-	const processors = [
+  const processors = [
     precss(),
     lost(),
     calc(),
     autoprefixer({browsers: ['last 2 version']})
   ];
   return gulp.src(paths.css)
-	  .pipe($.newer(resolveToApp('**')))
-		.pipe($.sourcemaps.init())
-	  .pipe($.postcss(processors).on('error', console.error.bind(console)))
-	  .pipe($.rename((filepath) => {
-	    filepath.basename = path.basename(filepath.dirname);
-	  }))
-		.pipe($.sourcemaps.write('.'))
-	  .pipe(gulp.dest(path.join(root, 'app')));
+    .pipe($.newer(resolveToApp('**')))
+    .pipe($.sourcemaps.init())
+    .pipe($.postcss(processors).on('error', console.error.bind(console)))
+    .pipe($.rename((filepath) => {
+      filepath.basename = path.basename(filepath.dirname);
+    }))
+    .pipe($.sourcemaps.write('.'))
+    .pipe(gulp.dest(path.join(root, 'app')));
 }
 
 function staticFiles() {
   return gulp.src(paths.static)
-		.pipe(gulp.dest(paths.dist));
+    .pipe(gulp.dest(paths.dist));
 }
 
 function build() {
-	const Builder = systemjsBuilder;
-	const builder = new Builder(root, './jspm.config.js');
-	const dist = path.join(paths.dist + 'build.js');
+  const Builder = systemjsBuilder;
+  const builder = new Builder(root, './jspm.config.js');
+  const dist = path.join(paths.dist + 'build.js');
 
-	return builder.buildStatic(resolveToApp('bootstrap.ts'), dist, {
-		minify: true,
-		mangle: false,
-	})
-	.then(() => {
-		// Also create a fully annotated minified copy
-		return gulp.src(dist)
-			// .pipe($.ngAnnotate())
-			//.pipe(uglify())
-			// .pipe($.rename('bundle.js'))
-			.pipe(gulp.dest(paths.dist))
-	})
-	.then(() => {
-		// Inject minified script into index
-		return gulp.src('src/index.html')
-			.pipe($.htmlReplace({
-				'js': 'build.js'
-			}))
-			.pipe(gulp.dest(paths.dist));
-	});
+  return builder.buildStatic(resolveToApp('bootstrap.ts'), dist, {
+    minify: true,
+    mangle: false,
+  })
+  .then(() => {
+    // Also create a fully annotated minified copy
+    return gulp.src(dist)
+      .pipe(gulp.dest(paths.dist));
+  })
+  .then(() => {
+    // Inject minified script into index
+    return gulp.src('src/index.html')
+      .pipe($.htmlReplace({
+        'js': 'build.js'
+      }))
+      .pipe(gulp.dest(paths.dist));
+  });
 }
 
 // Browser-sync
 function serveDev() {
-	'use strict'
-	require('chokidar-socket-emitter')({port: 8081, path: 'src', relativeTo: 'src'})
-	serve({
-		port: process.env.PORT || 3000,
-		open: false,
-		files: [].concat(
-			paths.app,
-			paths.css,
-			paths.html
-		),
-		server: {
-			baseDir: [root, root + '/static'],
-			// serve our jspm dependencies with the src folder
-			routes: {
-				'/jspm.config.js': './jspm.config.js',
-				'/jspm_packages': './jspm_packages'
-			}
-		},
+  require('chokidar-socket-emitter')({port: 8081, path: 'src', relativeTo: 'src'});
+  serve({
+    port: process.env.PORT || 3000,
+    open: false,
+    files: [].concat(
+      paths.app,
+      paths.css,
+      paths.html
+    ),
+    server: {
+      baseDir: [root, root + '/static'],
+      // serve our jspm dependencies with the src folder
+      routes: {
+        '/jspm.config.js': './jspm.config.js',
+        '/jspm_packages': './jspm_packages'
+      }
+    },
     middleware: [
       modRewrite([
         '^([^.]+)$ /index.html [L]'
       ])
     ]
-	});
+  });
 }
 
 // Browser-sync Dist
@@ -203,9 +175,9 @@ function watch() {
   // gulp.watch(paths.html).on('change', reload);
   // gulp.watch(paths.css).on('change', gulp.series(styles, reload));
   // gulp.watch(paths.app).on('change', reload);
-	gulp.watch(paths.html, reload);
-	gulp.watch(paths.app, reload);
-	gulp.watch(paths.css, gulp.series(styles, reload));
+  gulp.watch(paths.html, reload);
+  gulp.watch(paths.app, reload);
+  gulp.watch(paths.css, gulp.series(styles, reload));
 }
 
 function component() {

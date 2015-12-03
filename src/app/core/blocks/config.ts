@@ -23,7 +23,7 @@ export default function OnConfig(
         }
         return $q.reject(response);
       }
-    }
+    };
   });
 
   $authProvider.facebook({
@@ -31,7 +31,7 @@ export default function OnConfig(
   });
 
   $authProvider.google({
-    clientId: '631036554609-v5hm2amv4pvico3asfi97f54sc51ji4o.apps.googleusercontent.com'
+    clientId: '458926145328-jv8dfmrea4uek6lgimjntgdcl6fqi2ts.apps.googleusercontent.com'
   });
 
   $authProvider.twitter({

@@ -48,8 +48,18 @@ angular.module('signup.config', ['ui.router'])
 export default class Signup {
   title: string;
   user: any;
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
   constructor($log, $location, $auth, $mdToast) {
     this.title = 'Signup';
+    this.user = {
+      firstName: this.firstName,
+      lastName: this.lastName,
+      email: this.email,
+      password: this.password
+    };
     LOCATION.set(this, $location);
     AUTH.set(this, $auth);
     MDTOAST.set(this, $mdToast);

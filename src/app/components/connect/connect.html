@@ -1,3 +1,28 @@
-<div>
-  <h1>{{ vm.title }}</h1>
+<div class="bg-cover">
+  <div class="social-login">
+    <div class="container">
+      <div class="hightlights">
+
+      </div>
+      <div class="login-step">
+        <div class="login-buttons">
+          <md-button
+            ng-click="vm.authenticate('facebook')"
+            class="social-button facebook">
+            <span>Sign In with Facebook</span>
+          </md-button>
+          <md-button
+            ng-click="vm.authenticate('twitter')"
+            class="social-button twitter">
+            <span>Sign In with Twitter</span>
+          </md-button>
+          <md-button
+            ng-click="vm.authenticate('google')"
+            class="social-button google">
+            <span>Sign In with Google</span>
+          </md-button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

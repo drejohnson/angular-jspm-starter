@@ -1,7 +1,7 @@
 node_modules/*
 jspm_packages/*
-gulpfile.js
-gulpfile.babel.js
-jspm.config.js
+/gulpfile.js
+/gulpfile.babel.js
+/jspm.config.js
 generator/*
 src/*

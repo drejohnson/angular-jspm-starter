@@ -31,13 +31,12 @@ System.config({
   },
 
   map: {
-    "@angular/router": "node_modules/angular/router",
     "@reactivex/rxjs": "npm:@reactivex/rxjs@5.0.0-alpha.8",
-    "angular": "github:angular/bower-angular@1.5.0-beta.0",
-    "angular-animate": "github:angular/bower-angular-animate@1.5.0-beta.0",
-    "angular-material": "github:angular/bower-material@1.0.0-rc4",
-    "angular-mocks": "npm:angular-mocks@1.5.0-beta.0",
-    "angular-sanitize": "github:angular/bower-angular-sanitize@1.5.0-beta.0",
+    "angular": "github:angular/bower-angular@1.5.0-beta.2",
+    "angular-animate": "github:angular/bower-angular-animate@1.5.0-beta.2",
+    "angular-material": "github:angular/bower-material@1.0.0-rc5",
+    "angular-mocks": "npm:angular-mocks@1.5.0-beta.2",
+    "angular-sanitize": "github:angular/bower-angular-sanitize@1.5.0-beta.2",
     "angular-ui-router": "github:angular-ui/ui-router@0.2.15",
     "autoprefixer": "npm:autoprefixer@6.1.0",
     "capaj/jspm-hot-reloader": "github:capaj/jspm-hot-reloader@0.3.0",
@@ -46,32 +45,32 @@ System.config({
     "es6-shim": "github:es-shims/es6-shim@0.33.10",
     "jspm-loader-css": "npm:jspm-loader-css@1.0.1-beta1",
     "lost": "npm:lost@6.6.2",
-    "ng-forward": "npm:ng-forward@0.0.1-alpha.8",
+    "ng-forward": "npm:ng-forward@0.0.1-alpha.10",
     "postcss": "npm:postcss@5.0.10",
     "postcss-calc": "npm:postcss-calc@5.0.0",
     "precss": "npm:precss@1.3.0",
     "reflect-metadata": "npm:reflect-metadata@0.1.2",
-    "satellizer": "npm:satellizer@0.13.0",
+    "satellizer": "npm:satellizer@0.13.1",
     "text": "github:systemjs/plugin-text@0.0.3",
-    "ts": "github:frankwallis/plugin-typescript@2.2.0",
-    "typescript": "npm:typescript@1.6.2",
+    "ts": "github:frankwallis/plugin-typescript@2.2.1",
+    "typescript": "npm:typescript@1.7.3",
     "zone.js": "npm:zone.js@0.5.8",
     "github:angular-ui/ui-router@0.2.15": {
-      "angular": "github:angular/bower-angular@1.5.0-beta.0"
+      "angular": "github:angular/bower-angular@1.5.0-beta.2"
     },
-    "github:angular/bower-angular-animate@1.5.0-beta.0": {
-      "angular": "github:angular/bower-angular@1.5.0-beta.0"
+    "github:angular/bower-angular-animate@1.5.0-beta.2": {
+      "angular": "github:angular/bower-angular@1.5.0-beta.2"
     },
-    "github:angular/bower-angular-aria@1.5.0-beta.0": {
-      "angular": "github:angular/bower-angular@1.5.0-beta.0"
+    "github:angular/bower-angular-aria@1.5.0-beta.2": {
+      "angular": "github:angular/bower-angular@1.5.0-beta.2"
     },
-    "github:angular/bower-angular-sanitize@1.5.0-beta.0": {
-      "angular": "github:angular/bower-angular@1.5.0-beta.0"
+    "github:angular/bower-angular-sanitize@1.5.0-beta.2": {
+      "angular": "github:angular/bower-angular@1.5.0-beta.2"
     },
-    "github:angular/bower-material@1.0.0-rc4": {
-      "angular": "github:angular/bower-angular@1.5.0-beta.0",
-      "angular-animate": "github:angular/bower-angular-animate@1.5.0-beta.0",
-      "angular-aria": "github:angular/bower-angular-aria@1.5.0-beta.0",
+    "github:angular/bower-material@1.0.0-rc5": {
+      "angular": "github:angular/bower-angular@1.5.0-beta.2",
+      "angular-animate": "github:angular/bower-angular-animate@1.5.0-beta.2",
+      "angular-aria": "github:angular/bower-angular-aria@1.5.0-beta.2",
       "css": "github:systemjs/plugin-css@0.1.19"
     },
     "github:capaj/jspm-hot-reloader@0.3.0": {
@@ -79,8 +78,8 @@ System.config({
       "socket.io-client": "github:socketio/socket.io-client@1.3.7",
       "weakee": "npm:weakee@0.9.1"
     },
-    "github:frankwallis/plugin-typescript@2.2.0": {
-      "typescript": "npm:typescript@1.6.2"
+    "github:frankwallis/plugin-typescript@2.2.1": {
+      "typescript": "npm:typescript@1.7.3"
     },
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
@@ -485,7 +484,7 @@ System.config({
       "brace-expansion": "npm:brace-expansion@1.1.1",
       "path": "github:jspm/nodelibs-path@0.1.0"
     },
-    "npm:ng-forward@0.0.1-alpha.8": {
+    "npm:ng-forward@0.0.1-alpha.10": {
       "@reactivex/rxjs": "npm:@reactivex/rxjs@5.0.0-alpha.8",
       "crypto": "github:jspm/nodelibs-crypto@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2",
@@ -723,7 +722,7 @@ System.config({
       "assert": "github:jspm/nodelibs-assert@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:typescript@1.6.2": {
+    "npm:typescript@1.7.3": {
       "tty": "github:jspm/nodelibs-tty@0.1.0"
     },
     "npm:url@0.10.3": {
