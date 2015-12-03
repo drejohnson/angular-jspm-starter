@@ -38,7 +38,10 @@ import * as defaultController from './controllers/default';
 import * as apiController from './controllers/api';
 import * as userController from './controllers/user';
 
-// const client = redis.createClient();
+const client = redis.createClient(6379, 'redis');
+client.on('connect', () => {
+  console.log('Redis connected');
+});
 // prerender.set('beforeRender', (req, done) => {
 //   client.get(req.url, done);
 // }).set('afterRender', (err, req, prerender_res) => {
@@ -168,6 +171,10 @@ if (app.get('env') === 'development') {
       error: err
     });
   });
+}
+
+if (app.get('env') === 'production') {
+  console.log('production');
 }
 
 // production error handler
