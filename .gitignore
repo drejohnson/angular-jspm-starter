@@ -1,6 +1,7 @@
 .DS_Store
 .git
 .idea
+.imdone
 node_modules
 jspm_packages
 .settings
