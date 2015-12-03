@@ -6,7 +6,7 @@ export default {
       name: 'ExpressJS Example Development'
     },
     TOKEN_SECRET: process.env.TOKEN_SECRET || 'illmatic1994VSready2die1994',
-    MONGO_URI: process.env.MONGODB || process.env.MONGOLAB_URI || 'mongodb://localhost:27017/dottv',
+    MONGO_URI: process.env.MONGODB || process.env.MONGOLAB_URI || 'mongodb://localhost:27017/appdb',
     // OAuth 2.0
     FACEBOOK_SECRET: process.env.FACEBOOK_SECRET || '',
     GOOGLE_SECRET: process.env.GOOGLE_SECRET || '4wFh0o2hckdi5FHTScgIvSEU',
@@ -22,7 +22,7 @@ export default {
       name: 'ExpressJS Example Production'
     },
     TOKEN_SECRET: process.env.TOKEN_SECRET || 'illmatic1994VSready2die1994',
-    MONGO_URI: process.env.MONGODB || process.env.MONGOLAB_URI || 'mongodb://mongo/dottv',
+    MONGO_URI: process.env.MONGODB || process.env.MONGOLAB_URI || 'mongodb://mongo/appdb',
     // OAuth 2.0
     FACEBOOK_SECRET: process.env.FACEBOOK_SECRET || '',
     GOOGLE_SECRET: process.env.GOOGLE_SECRET || '4wFh0o2hckdi5FHTScgIvSEU',

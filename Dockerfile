@@ -14,7 +14,10 @@ RUN cd /web/app/ && \
 
 # Copy app directory
 # This layer will cache files while they don't change
-COPY . /web/app
+COPY .babelrc /web/app/.babelrc
+COPY index.js /web/app/index.js
+COPY server /web/app/server
+COPY static /web/app/static
 
 WORKDIR /web/app
 
