@@ -1,42 +1,34 @@
 /**
  * Module dependencies.
  */
-import fs from 'fs';
-import http from 'http';
 import path from 'path';
-import qs from 'querystring';
-
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import compression from 'compression';
-import colors from 'colors';
 import cors from 'cors';
 import errorHandler from 'errorhandler';
 import express from 'express';
+import jwt from 'express-jwt';
 import expressValidator from 'express-validator';
 import favicon from 'serve-favicon';
 import logger from 'morgan';
-import lusca from 'lusca';
-import jwt from 'jwt-simple';
 import methodOverride from 'method-override';
 import mongoose from 'mongoose';
 // import prerender from 'prerender-node';
 // import prismicio from 'express-prismic';
 import redis from 'redis';
-import request from 'request';
-import session from 'express-session';
+import dotenv from 'dotenv';
 
-import User from './models/User';
+dotenv.load();
+
 import config from './config';
 import Configuration from './config/prismic-configuration';
-
-import {ensureAuthenticated, createJWT} from './middleware/authenticated';
+import authenticate from './middleware/authenticated';
 /**
  * Controllers (route handlers).
  */
 import * as defaultController from './controllers/default';
 import * as apiController from './controllers/api';
-import * as userController from './controllers/user';
 
 const client = redis.createClient(6379, 'redis');
 client.on('connect', () => {
@@ -66,21 +58,9 @@ app.use(cors());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(expressValidator());
-// app.use(methodOverride());
-// app.use(cookieParser());
-// app.use(session({
-//   resave: true,
-//   saveUninitialized: true,
-//   secret: config.TOKEN_SECRET,
-//   // store: new MongoStore.session({ url: config.MONGO_URI, autoReconnect: true })
-// }));
-// app.use(lusca({
-//   csrf: true,
-//   xframe: 'SAMEORIGIN',
-//   xssProtection: true,
-//   angular: true
-// }));
+app.use(expressValidator());
+app.use(methodOverride());
+app.use(cookieParser());
 
 const staticOptions = {
   dotfiles: 'ignore',
@@ -134,16 +114,16 @@ app.get('/api', apiController.getApi);
 // app.get('/api/audio/:id', apiController.getAudioDetail);
 //
 // app.get('/api/search/:q', apiController.getSearch);
-app.get('/api/me', ensureAuthenticated, userController.getProfile);
-app.put('/api/me', ensureAuthenticated, userController.updateProfile);
+// app.get('/api/me', ensureAuthenticated, userController.getProfile);
+// app.put('/api/me', ensureAuthenticated, userController.updateProfile);
 
 // OAuth authentication routes. (Sign in)
-app.post('/auth/login', ensureAuthenticated, userController.authLogin);
-app.post('/auth/signup', ensureAuthenticated, userController.authSignup);
-app.post('/auth/facebook', ensureAuthenticated, userController.authFacebook);
-app.post('/auth/twitter', ensureAuthenticated, userController.authTwitter);
-app.post('/auth/google', ensureAuthenticated, userController.authGoogle);
-app.post('/auth/unlink', ensureAuthenticated, userController.authUnlink);
+// app.post('/auth/login', ensureAuthenticated, userController.authLogin);
+// app.post('/auth/signup', ensureAuthenticated, userController.authSignup);
+// app.post('/auth/facebook', ensureAuthenticated, userController.authFacebook);
+// app.post('/auth/twitter', ensureAuthenticated, userController.authTwitter);
+// app.post('/auth/google', ensureAuthenticated, userController.authGoogle);
+// app.post('/auth/unlink', ensureAuthenticated, userController.authUnlink);
 
 // Prismic Preview Route
 // app.route('/preview').get(prismic.preview);

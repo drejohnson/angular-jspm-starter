@@ -1,3 +1,4 @@
-<div>
-  <h1>{{ vm.title }}</h1>
-</div>
+<md-button aria-label="Logout" ng-if="vm.auth.isAuthenticated" ng-click="vm.logout()">
+  <md-icon md-font-set="material-icons" aria-label="More">exit_to_app</md-icon>
+  Logout
+</md-button>

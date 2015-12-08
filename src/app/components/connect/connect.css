@@ -1,6 +1,9 @@
 :root {
+
   /* Font Families*/
+
   /* Defaults */
+
   /* Typography */
 }
 
@@ -14,14 +17,20 @@ connect .bg-cover {
   width: 100%;
   height: 100%;
   background: #000;
-  background-image: url("/images/bg-cover-alt.jpg");
+  background-image: url("/images/bg-cover.jpg");
   background-size: cover;
   background-position: center center;
   vertical-align: middle;
 }
 
 connect .bg-cover:before {
-  background-color: rgba(0,0,0,0.3);
+  background: rgba(0,0,0,1);
+  background: linear-gradient(
+        to left,
+        hsla(0, 0%, 100%, 0),
+        hsla(215, 100%, 15%, 1) ),
+        linear-gradient( to left, rgba(0, 71, 171,.2), rgba(0,0,0,0) ) rgba(255,255,255,0);
+  width: 100%;
   content: "";
   position: absolute;
   display: block;
@@ -34,102 +43,49 @@ connect .bg-cover:before {
 connect .social-login {
   position: relative;
   width: 1200px;
+  height: calc(100vh - 65px);
   margin: 0 auto;
 }
 
-connect .social-login .container {
-  *zoom: 1;
+connect .social-login .tagline {
+  margin-top: -26px;
+  margin-right: 2.5rem;
 }
 
-connect .social-login .container:before {
-  content: '';
-  display: table;
-}
+/*border-bottom: 3px solid var(--brandWhite);*/
 
-connect .social-login .container:after {
-  content: '';
-  display: table;
-  clear: both;
-}
-
-connect .social-login .highlights {
-  width: calc(99.99% * 2/3 - 10px);
-}
-
-connect .social-login .highlights:nth-child(n) {
-  float: left;
-  margin-right: 30px;
-  clear: none;
-}
-
-connect .social-login .highlights:last-child {
-  margin-right: 0;
-}
-
-connect .social-login .highlights:nth-child(3n) {
-  margin-right: 0;
-}
-
-connect .social-login .highlights:nth-child(3n + 1) {
-  clear: left;
-}
-
-connect .social-login .login-step {
-  width: calc(99.99% * 1/3 - 20px);
-}
-
-connect .social-login .login-step:nth-child(n) {
-  float: left;
-  margin-right: 30px;
-  clear: none;
-}
-
-connect .social-login .login-step:last-child {
-  margin-right: 0;
-}
-
-connect .social-login .login-step:nth-child(3n) {
-  margin-right: 0;
-}
-
-connect .social-login .login-step:nth-child(3n + 1) {
-  clear: left;
-}
-
-connect .social-login .login-step .social-button {
-  display: block;
-  width: 300px;
-  height: 40px;
-  margin: 1rem auto 0;
-  border-radius: 300px;
-}
-
-connect .social-login .login-step h1 {
-  font-size: 1.125rem;
-  text-align: center;
-}
-
-connect .social-login .login-step .login-or {
-  text-align: center;
+connect .social-login .tagline h3 {
+  line-height: 1.5;
   text-transform: uppercase;
-  min-width: 300px;
-  margin: 1rem 0;
-  position: relative;
 }
 
-connect .social-login .login-step .login-or span {
-  position: relative;
-  top: 5px;
+connect .social-login .tagline h3 span {
+  color: #c0392b;
 }
 
-connect .social-login .login-step .login-or:before, connect .social-login .login-step .login-or:after {
-  width: 40%;
-  height: 1px;
-  background: #ccc;
-  content: '.';
-  text-indent: -9999em;
+connect .social-login .connect-flow header {
+  width: 200px;
+  background-color: #ecf0f1;
+
+  /*border-radius: 300px;*/
+  margin-bottom: 1rem;
   overflow: hidden;
-  display: inline-block;
+}
+
+connect .social-login .connect-flow .logo {
+  display: block;
+  width: 200px;
+
+  /*margin: 0 auto;*/
+}
+
+connect .social-login .connect-flow .connect-button {
+  font-weight: 700;
+  width: 200px;
+  height: 40px;
+  margin: 0;
+  border: 3px solid #ecf0f1;
+  border-radius: 0;
 }
 
 /*# sourceMappingURL=connect.css.map */

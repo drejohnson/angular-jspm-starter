@@ -1,12 +1,15 @@
 /// <reference path="../typings/_references.d.ts" />
 
+import 'reflect-metadata';
 import 'angular';
 import 'angular-animate';
+import 'angular-cookies';
 import 'angular-sanitize';
 import 'angular-material';
 import 'angular-ui-router';
-import 'satellizer'
-import 'reflect-metadata';
+import 'angular-storage';
+import 'angular-jwt';
+import 'auth0-angular';
 import { bootstrap } from 'ng-forward';
 
 /*
@@ -25,13 +28,14 @@ import {App} from './components/app/app';
  * Universal injectables
  */
 const UNIVERSAL_BINDINGS = [
-  // Angular's router services/bindings
   'ngSanitize',
+  'ngCookies',
   'ngAnimate',
   'ngMaterial',
+  'auth0',
+  'angular-storage',
+  'angular-jwt',
   'ui.router',
-  'satellizer',
-
   // Our collection of services from /services
   APP_SERVICES_BINDINGS
 ];

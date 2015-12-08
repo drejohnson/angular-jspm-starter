@@ -12,17 +12,18 @@ import STYLES from './connect.css!';
 @Component({
   selector: 'connect',
   directives: [],
-  // providers: ['connect.config'],
+  providers: [],
   bindings: [STYLES],
   controllerAs: 'vm',
   // include our .html and .css file
   styles: [],
   template: TEMPLATE
 })
-@Inject('$log')
+@Inject('$http', 'auth', 'store', '$location', '$log')
 export default class Connect {
   title: string;
-  constructor(public $log) {
+  connect: any;
+  constructor(public $http, public auth, public store, public $location, public $log) {
     this.title = 'Connect';
     // On load
     this.resolve();
@@ -32,6 +33,17 @@ export default class Connect {
    * Handles on load processing, and loading initial data
  */
   resolve() {
+    this.connect = () => {
+      this.auth.signin({}, (profile, id_token, access_token, state, refresh_token) => {
+        // Success callback
+        this.store.set('profile', profile);
+        this.store.set('token', id_token);
+        this.$location.path('/profile');
+      }, (error) => {
+        // Error callback
+        this.$log.log('There was an error logging in', error);
+      });
+    };
     this.$log.log(`${this.title} component`);
   }
 };

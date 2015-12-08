@@ -2,9 +2,11 @@
 .git
 .idea
 .imdone
+.env
 node_modules
 jspm_packages
 .settings
 *.log
 dist/
+demo
 $DOCKER_CERT_PATH

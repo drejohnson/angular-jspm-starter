@@ -3,10 +3,17 @@ export default function OnRun(
   $state,
   $stateParams,
   $location,
-  $log) {
+  $log,
+  auth,
+  store,
+  jwtHelper) {
   // Run block
-  $rootScope.$state = $state;
 
+  // This hooks allow auth events to check everything as soon as the app starts
+  auth.hookEvents();
+
+  $rootScope.$state = $state;
+  // $state.get('profile').data.requiresLogin = true;
   const stateChangeSuccess = $rootScope.$on('$stateChangeSuccess', (event, toState) => {
     $rootScope.pageTitle = '';
     $rootScope.pageDesc = '';
@@ -26,11 +33,16 @@ export default function OnRun(
     //
     // $log.log('Current Location: ' + $rootScope.$title);
 
+    $log.log($state.current);
+    // $log.log(fromState);
+    // if ($state.current.data !== undefined && !auth.isAuthenticated) {
+    //   $location.path('/connect');
+    //   $log.warn('REQUIRES LOGIN');
+    // }
   });
 
   const stateChangeStart = $rootScope.$on('$stateChangeStart', (event, toState, toParams, fromState, fromParams) => {
     $log.log('Change Started:', new Date());
-    // $log.log(fromState);
   });
 
   const stateChangeError = $rootScope.$on('$stateChangeError', (event, next, previous, error) => {
@@ -38,5 +50,19 @@ export default function OnRun(
     $log.error(error.stack);
     $state.go('500');
     $log.log(error);
+  });
+
+  const locationChangeStart = $rootScope.$on('$locationChangeStart', () => {
+    const token = store.get('token');
+    if (token) {
+      if (!jwtHelper.isTokenExpired(token)) {
+        if (!auth.isAuthenticated) {
+          auth.authenticate(store.get('profile'), token);
+        }
+      } else {
+        // Either show the login page or use the refresh token to get a new idToken
+        $location.path('/connect');
+      }
+    }
   });
 }

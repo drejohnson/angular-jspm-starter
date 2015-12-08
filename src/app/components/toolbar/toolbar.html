@@ -8,21 +8,15 @@
 		</div>
     <!-- fill up the space between left and right area -->
 		<span flex></span>
-    <md-button
-      ng-if="vm.isAuthenticated()">
-      <a ui-sref="profile">Profile</a>
+
+    <md-button aria-label="Connect" ui-sref="connect" ng-if="!vm.auth.isAuthenticated">
+      <md-icon md-font-set="material-icons" aria-label="More">lock_outline</md-icon>
+      Connect
     </md-button>
-    <md-button
-      ng-if="!isAuthenticated()">
-      <a ui-sref="login">Login</a>
-      <a ui-sref="signup">Sign up</a>
+    <md-button aria-label="Profile" ng-if="vm.auth.isAuthenticated" ui-sref="profile">
+      <md-icon md-font-set="material-icons" aria-label="More">account_circle</md-icon>
+      Profile
     </md-button>
-    <md-button
-      ng-if="isAuthenticated()">
-      <a ui-sref="logout">Logout</a>
-    </md-button>
-    <md-button class="md-icon-button" aria-label="More">
-      <md-icon md-font-set="material-icons" aria-label="More">more_vert</md-icon>
-    </md-button>
+    <logout ng-if="vm.auth.isAuthenticated"></logout>
   </div>
 </md-toolbar>

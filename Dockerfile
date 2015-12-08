@@ -1,7 +1,6 @@
 FROM node:5.0
 
 RUN npm install -g babel-cli
-RUN npm install -g pm2
 
 RUN mkdir -p /web/app
 
@@ -15,6 +14,7 @@ RUN cd /web/app/ && \
 # Copy app directory
 # This layer will cache files while they don't change
 COPY .babelrc /web/app/.babelrc
+COPY .env /web/app/.env
 COPY index.js /web/app/index.js
 COPY server /web/app/server
 COPY static /web/app/static

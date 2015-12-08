@@ -1,28 +1,18 @@
 <div class="bg-cover">
-  <div class="social-login">
-    <div class="container">
-      <div class="hightlights">
-
-      </div>
-      <div class="login-step">
-        <div class="login-buttons">
-          <md-button
-            ng-click="vm.authenticate('facebook')"
-            class="social-button facebook">
-            <span>Sign In with Facebook</span>
-          </md-button>
-          <md-button
-            ng-click="vm.authenticate('twitter')"
-            class="social-button twitter">
-            <span>Sign In with Twitter</span>
-          </md-button>
-          <md-button
-            ng-click="vm.authenticate('google')"
-            class="social-button google">
-            <span>Sign In with Google</span>
-          </md-button>
-        </div>
-      </div>
+  <div class="social-login" layout="row" layout-align="center center">
+    <div class="tagline">
+      <h3>
+        The <span>story</span> is in the <span>telling</span>
+      </h3>
+    </div>
+    <div class="connect-flow" layout="column" layout-align="center center">
+      <header>
+        <img class="logo" src="/images/logos/logo-white.svg" alt="Logo">
+      </header>
+      <md-button class="connect-button" aria-label="Profile" ng-click="vm.connect()">
+        <!-- <md-icon md-font-set="material-icons" aria-label="More">account_circle</md-icon> -->
+        Click to connect
+      </md-button>
     </div>
   </div>
 </div>

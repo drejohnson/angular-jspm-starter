@@ -1,3 +1,5 @@
+import { AUTH0_CLIENT_ID, AUTH0_DOMAIN, AUTH0_CALLBACK_URL } from '../constants/constants';
+
 export default function OnConfig(
   $provide,
   $urlRouterProvider,
@@ -7,36 +9,21 @@ export default function OnConfig(
   $rootScopeProvider,
   $logProvider,
   $mdThemingProvider,
-  $authProvider) {
+  authProvider,
+  jwtInterceptorProvider) {
   // Config block
-  $httpProvider.interceptors.push(($rootScope, $q, $window, $location) => {
-    return {
-      request(config) {
-        if ($window.localStorage.token) {
-          config.headers.Authorization = 'Bearer ' + $window.localStorage.token;
-        }
-        return config;
-      },
-      responseError(response) {
-        if (response.status === 401 || response.status === 403) {
-          $location.path('/login');
-        }
-        return $q.reject(response);
-      }
-    };
+
+  authProvider.init({
+    domain: AUTH0_DOMAIN,
+    clientID: AUTH0_CLIENT_ID,
+    callbackURL: AUTH0_CALLBACK_URL,
+    // Here include the URL to redirect to if the user tries to access a resource when not authenticated.
+    loginUrl: '/connect'
   });
 
-  $authProvider.facebook({
-    clientId: '657854390977827'
-  });
+  jwtInterceptorProvider.tokenGetter = (store) => store.get('token');
 
-  $authProvider.google({
-    clientId: '458926145328-jv8dfmrea4uek6lgimjntgdcl6fqi2ts.apps.googleusercontent.com'
-  });
-
-  $authProvider.twitter({
-    url: '/auth/twitter'
-  });
+  $httpProvider.interceptors.push('jwtInterceptor');
 
   // Angular Material theme config
   $mdThemingProvider.definePalette('brand-grey', {
@@ -89,5 +76,5 @@ export default function OnConfig(
     enabled: true,
     requireBase: false
   }).hashPrefix('!');
-  return $urlRouterProvider.otherwise('/');
+  return $urlRouterProvider.otherwise('/connect');
 }

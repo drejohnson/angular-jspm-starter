@@ -18,12 +18,8 @@ redis:
   - "6379:6379"
 nginxproxy:
   image: jwilder/nginx-proxy
-  environment:
-  - DOCKER_CERT_PATH=/certs
-  - DOCKER_HOST=$DOCKER_HOST
-  - DOCKER_TLS_VERIFY=1
+  #environment:
   volumes:
-  - /var/run/docker.sock:/tmp/docker.sock
-  - $DOCKER_CERT_PATH:/certs
+  - /var/run/docker.sock:/tmp/docker.sock:ro
   ports:
   - "80:80"

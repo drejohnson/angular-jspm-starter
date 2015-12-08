@@ -9,7 +9,7 @@ System.register(['ng-forward', './logout.html!text', './logout.css!'], function(
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var ng_forward_1, logout_html_text_1, logout_css_1;
-    var AUTH, LOCATION, MDTOAST, LOG, Logout;
+    var Logout;
     return {
         setters:[
             function (ng_forward_1_1) {
@@ -22,57 +22,36 @@ System.register(['ng-forward', './logout.html!text', './logout.css!'], function(
                 logout_css_1 = logout_css_1_1;
             }],
         execute: function() {
-            AUTH = new WeakMap();
-            LOCATION = new WeakMap();
-            MDTOAST = new WeakMap();
-            LOG = new WeakMap();
-            angular.module('logout.config', ['ui.router'])
-                .config(function ($stateProvider) {
-                $stateProvider
-                    .state('logout', {
-                    url: '/logout',
-                    template: null,
-                    resolve: {}
-                });
-            });
+            ;
             Logout = (function () {
-                function Logout($log, $location, $auth, $mdToast) {
-                    var _this = this;
-                    this.title = 'Logout';
-                    LOG.set(this, $log);
-                    LOCATION.set(this, $location);
-                    AUTH.set(this, $auth);
-                    MDTOAST.set(this, $mdToast);
-                    INIT.set(this, function () {
-                        LOG.get(_this).log(_this.title + " component");
-                        if (!AUTH.get(_this).isAuthenticated()) {
-                            return;
-                        }
-                        AUTH.get(_this).logout().then(function () {
-                            MDTOAST.get(_this).show(MDTOAST.get(_this).simple()
-                                .content('You have been logged out!')
-                                .position('top left')
-                                .hideDelay(3000));
-                            LOCATION.get(_this).path('/');
-                        });
-                        LOG.get(_this).log('Logged out');
-                    });
-                    this.resolve();
+                function Logout($log, $location, auth, store) {
+                    this.$log = $log;
+                    this.$location = $location;
+                    this.auth = auth;
+                    this.store = store;
+                    this.title = 'Logout',
+                        this.resolve();
                 }
                 Logout.prototype.resolve = function () {
-                    INIT.get(this)();
+                    var _this = this;
+                    this.logout = function () {
+                        _this.auth.signout();
+                        _this.store.remove('profile');
+                        _this.store.remove('token');
+                        _this.$location.path('/');
+                    };
                 };
                 Logout = __decorate([
                     ng_forward_1.Component({
                         selector: 'logout',
                         directives: [],
-                        providers: ['logout.config'],
+                        providers: [],
                         bindings: [logout_css_1.default],
                         controllerAs: 'vm',
                         styles: [],
                         template: logout_html_text_1.default
                     }),
-                    ng_forward_1.Inject('$log', '$location', '$auth', '$mdToast'), 
+                    ng_forward_1.Inject('$log', '$location', 'auth', 'store'), 
                     __metadata('design:paramtypes', [Object, Object, Object, Object])
                 ], Logout);
                 return Logout;
@@ -82,4 +61,4 @@ System.register(['ng-forward', './logout.html!text', './logout.css!'], function(
         }
     }
 });
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibG9nb3V0LmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsibG9nb3V0LnRzIl0sIm5hbWVzIjpbIkxvZ291dCIsIkxvZ291dC5jb25zdHJ1Y3RvciIsIkxvZ291dC5yZXNvbHZlIl0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7OztRQVVNLElBQUksRUFDSixRQUFRLEVBQ1IsT0FBTyxFQUNQLEdBQUc7Ozs7Ozs7Ozs7Ozs7WUFISCxJQUFJLEdBQUcsSUFBSSxPQUFPLEVBQUUsQ0FBQztZQUNyQixRQUFRLEdBQUcsSUFBSSxPQUFPLEVBQUUsQ0FBQztZQUN6QixPQUFPLEdBQUcsSUFBSSxPQUFPLEVBQUUsQ0FBQztZQUN4QixHQUFHLEdBQUcsSUFBSSxPQUFPLEVBQUUsQ0FBQztZQUUxQixPQUFPLENBQUMsTUFBTSxDQUFDLGVBQWUsRUFBRSxDQUFDLFdBQVcsQ0FBQyxDQUFDO2lCQUMzQyxNQUFNLENBQUMsVUFBQyxjQUFjO2dCQUNyQixjQUFjO3FCQUNYLEtBQUssQ0FBQyxRQUFRLEVBQUU7b0JBQ2YsR0FBRyxFQUFFLFNBQVM7b0JBQ2QsUUFBUSxFQUFFLElBQUk7b0JBQ2QsT0FBTyxFQUFFLEVBQ1I7aUJBQ0YsQ0FBQyxDQUFDO1lBQ1AsQ0FBQyxDQUFDLENBQUM7WUFHTDtnQkFhRUEsZ0JBQVlBLElBQUlBLEVBQUVBLFNBQVNBLEVBQUVBLEtBQUtBLEVBQUVBLFFBQVFBO29CQWI5Q0MsaUJBMkNDQTtvQkE3QkdBLElBQUlBLENBQUNBLEtBQUtBLEdBQUdBLFFBQVFBLENBQUNBO29CQUN0QkEsR0FBR0EsQ0FBQ0EsR0FBR0EsQ0FBQ0EsSUFBSUEsRUFBRUEsSUFBSUEsQ0FBQ0EsQ0FBQ0E7b0JBQ3BCQSxRQUFRQSxDQUFDQSxHQUFHQSxDQUFDQSxJQUFJQSxFQUFFQSxTQUFTQSxDQUFDQSxDQUFDQTtvQkFDOUJBLElBQUlBLENBQUNBLEdBQUdBLENBQUNBLElBQUlBLEVBQUVBLEtBQUtBLENBQUNBLENBQUNBO29CQUN0QkEsT0FBT0EsQ0FBQ0EsR0FBR0EsQ0FBQ0EsSUFBSUEsRUFBRUEsUUFBUUEsQ0FBQ0EsQ0FBQ0E7b0JBQzVCQSxJQUFJQSxDQUFDQSxHQUFHQSxDQUFDQSxJQUFJQSxFQUFFQTt3QkFDYkEsR0FBR0EsQ0FBQ0EsR0FBR0EsQ0FBQ0EsS0FBSUEsQ0FBQ0EsQ0FBQ0EsR0FBR0EsQ0FBSUEsS0FBSUEsQ0FBQ0EsS0FBS0EsZUFBWUEsQ0FBQ0EsQ0FBQ0E7d0JBRTdDQSxFQUFFQSxDQUFDQSxDQUFDQSxDQUFDQSxJQUFJQSxDQUFDQSxHQUFHQSxDQUFDQSxLQUFJQSxDQUFDQSxDQUFDQSxlQUFlQSxFQUFFQSxDQUFDQSxDQUFDQSxDQUFDQTs0QkFBQ0EsTUFBTUEsQ0FBQ0E7d0JBQUNBLENBQUNBO3dCQUNsREEsSUFBSUEsQ0FBQ0EsR0FBR0EsQ0FBQ0EsS0FBSUEsQ0FBQ0EsQ0FBQ0EsTUFBTUEsRUFBRUEsQ0FBQ0EsSUFBSUEsQ0FBQ0E7NEJBQzNCQSxPQUFPQSxDQUFDQSxHQUFHQSxDQUFDQSxLQUFJQSxDQUFDQSxDQUFDQSxJQUFJQSxDQUNwQkEsT0FBT0EsQ0FBQ0EsR0FBR0EsQ0FBQ0EsS0FBSUEsQ0FBQ0EsQ0FBQ0EsTUFBTUEsRUFBRUE7aUNBQ3pCQSxPQUFPQSxDQUFDQSwyQkFBMkJBLENBQUNBO2lDQUNwQ0EsUUFBUUEsQ0FBQ0EsVUFBVUEsQ0FBQ0E7aUNBQ3BCQSxTQUFTQSxDQUFDQSxJQUFJQSxDQUFDQSxDQUFDQSxDQUFDQTs0QkFDcEJBLFFBQVFBLENBQUNBLEdBQUdBLENBQUNBLEtBQUlBLENBQUNBLENBQUNBLElBQUlBLENBQUNBLEdBQUdBLENBQUNBLENBQUNBO3dCQUMvQkEsQ0FBQ0EsQ0FBQ0EsQ0FBQ0E7d0JBQ0hBLEdBQUdBLENBQUNBLEdBQUdBLENBQUNBLEtBQUlBLENBQUNBLENBQUNBLEdBQUdBLENBQUNBLFlBQVlBLENBQUNBLENBQUNBO29CQUNsQ0EsQ0FBQ0EsQ0FBQ0EsQ0FBQ0E7b0JBRUhBLElBQUlBLENBQUNBLE9BQU9BLEVBQUVBLENBQUNBO2dCQUNqQkEsQ0FBQ0E7Z0JBS0RELHdCQUFPQSxHQUFQQTtvQkFDRUUsSUFBSUEsQ0FBQ0EsR0FBR0EsQ0FBQ0EsSUFBSUEsQ0FBQ0EsRUFBRUEsQ0FBQ0E7Z0JBQ25CQSxDQUFDQTtnQkExQ0hGO29CQUFDQSxzQkFBU0EsQ0FBQ0E7d0JBQ1RBLFFBQVFBLEVBQUVBLFFBQVFBO3dCQUNsQkEsVUFBVUEsRUFBRUEsRUFBRUE7d0JBQ2RBLFNBQVNBLEVBQUVBLENBQUNBLGVBQWVBLENBQUNBO3dCQUM1QkEsUUFBUUEsRUFBRUEsQ0FBQ0Esb0JBQU1BLENBQUNBO3dCQUNsQkEsWUFBWUEsRUFBRUEsSUFBSUE7d0JBRWxCQSxNQUFNQSxFQUFFQSxFQUFFQTt3QkFDVkEsUUFBUUEsRUFBRUEsMEJBQVFBO3FCQUNuQkEsQ0FBQ0E7b0JBQ0RBLG1CQUFNQSxDQUFDQSxNQUFNQSxFQUFFQSxXQUFXQSxFQUFFQSxPQUFPQSxFQUFFQSxVQUFVQSxDQUFDQTs7MkJBaUNoREE7Z0JBQURBLGFBQUNBO1lBQURBLENBQUNBLEFBM0NELElBMkNDO1lBM0NELDRCQTJDQyxDQUFBO1lBQUEsQ0FBQyJ9
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibG9nb3V0LmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsibG9nb3V0LnRzIl0sIm5hbWVzIjpbIkxvZ291dCIsIkxvZ291dC5jb25zdHJ1Y3RvciIsIkxvZ291dC5yZXNvbHZlIl0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7WUFRQyxDQUFDO1lBUUY7Z0JBY0VBLGdCQUFtQkEsSUFBSUEsRUFBU0EsU0FBU0EsRUFBU0EsSUFBSUEsRUFBU0EsS0FBS0E7b0JBQWpEQyxTQUFJQSxHQUFKQSxJQUFJQSxDQUFBQTtvQkFBU0EsY0FBU0EsR0FBVEEsU0FBU0EsQ0FBQUE7b0JBQVNBLFNBQUlBLEdBQUpBLElBQUlBLENBQUFBO29CQUFTQSxVQUFLQSxHQUFMQSxLQUFLQSxDQUFBQTtvQkFDbEVBLElBQUlBLENBQUNBLEtBQUtBLEdBQUdBLFFBQVFBO3dCQUdyQkEsSUFBSUEsQ0FBQ0EsT0FBT0EsRUFBRUEsQ0FBQ0E7Z0JBQ2pCQSxDQUFDQTtnQkFLREQsd0JBQU9BLEdBQVBBO29CQUFBRSxpQkFPQ0E7b0JBTkNBLElBQUlBLENBQUNBLE1BQU1BLEdBQUdBO3dCQUNaQSxLQUFJQSxDQUFDQSxJQUFJQSxDQUFDQSxPQUFPQSxFQUFFQSxDQUFDQTt3QkFDcEJBLEtBQUlBLENBQUNBLEtBQUtBLENBQUNBLE1BQU1BLENBQUNBLFNBQVNBLENBQUNBLENBQUNBO3dCQUM3QkEsS0FBSUEsQ0FBQ0EsS0FBS0EsQ0FBQ0EsTUFBTUEsQ0FBQ0EsT0FBT0EsQ0FBQ0EsQ0FBQ0E7d0JBQzNCQSxLQUFJQSxDQUFDQSxTQUFTQSxDQUFDQSxJQUFJQSxDQUFDQSxHQUFHQSxDQUFDQSxDQUFDQTtvQkFDM0JBLENBQUNBLENBQUNBO2dCQUNKQSxDQUFDQTtnQkEvQkhGO29CQUFDQSxzQkFBU0EsQ0FBQ0E7d0JBQ1RBLFFBQVFBLEVBQUVBLFFBQVFBO3dCQUNsQkEsVUFBVUEsRUFBRUEsRUFBRUE7d0JBQ2RBLFNBQVNBLEVBQUVBLEVBQUVBO3dCQUNiQSxRQUFRQSxFQUFFQSxDQUFDQSxvQkFBTUEsQ0FBQ0E7d0JBQ2xCQSxZQUFZQSxFQUFFQSxJQUFJQTt3QkFFbEJBLE1BQU1BLEVBQUVBLEVBQUVBO3dCQUNWQSxRQUFRQSxFQUFFQSwwQkFBUUE7cUJBQ25CQSxDQUFDQTtvQkFDREEsbUJBQU1BLENBQUNBLE1BQU1BLEVBQUVBLFdBQVdBLEVBQUVBLE1BQU1BLEVBQUVBLE9BQU9BLENBQUNBOzsyQkFzQjVDQTtnQkFBREEsYUFBQ0E7WUFBREEsQ0FBQ0EsQUFoQ0QsSUFnQ0M7WUFoQ0QsNEJBZ0NDLENBQUE7WUFBQSxDQUFDIn0=

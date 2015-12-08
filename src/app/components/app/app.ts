@@ -8,10 +8,8 @@ import Sidenav from '../sidenav/sidenav';
 
 import Home from '../home/home';
 import Connect from '../connect/connect';
-import Login from '../login/login';
-import Logout from '../logout/logout';
-import Signup from '../signup/signup';
 import Profile from '../profile/profile';
+// import Logout from '../logout/logout';
 
 import STYLES from './app.css!';
 
@@ -45,7 +43,8 @@ angular.module('app.core', [])
 })
 @StateConfig([
   { name: 'home', url: '/', component: Home },
-  { name: 'connect', url: '/connect', component: Connect }
+  { name: 'connect', url: '/connect', component: Connect },
+  { name: 'profile', url: '/profile', component: Profile, data: { requiresLogin: true } }
 ])
 @Inject('$log')
 export class App {

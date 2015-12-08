@@ -1,4 +1,4 @@
-System.register(['angular', 'angular-animate', 'angular-sanitize', 'angular-material', 'angular-ui-router', 'satellizer', 'reflect-metadata', 'ng-forward', './services/services', './components/app/app'], function(exports_1) {
+System.register(['reflect-metadata', 'angular', 'angular-animate', 'angular-cookies', 'angular-sanitize', 'angular-material', 'angular-ui-router', 'angular-storage', 'angular-jwt', 'auth0-angular', 'ng-forward', './services/services', './components/app/app'], function(exports_1) {
     var ng_forward_1, services_1, app_1;
     var UNIVERSAL_BINDINGS;
     return {
@@ -10,6 +10,9 @@ System.register(['angular', 'angular-animate', 'angular-sanitize', 'angular-mate
             function (_5) {},
             function (_6) {},
             function (_7) {},
+            function (_8) {},
+            function (_9) {},
+            function (_10) {},
             function (ng_forward_1_1) {
                 ng_forward_1 = ng_forward_1_1;
             },
@@ -22,10 +25,13 @@ System.register(['angular', 'angular-animate', 'angular-sanitize', 'angular-mate
         execute: function() {
             UNIVERSAL_BINDINGS = [
                 'ngSanitize',
+                'ngCookies',
                 'ngAnimate',
                 'ngMaterial',
+                'auth0',
+                'angular-storage',
+                'angular-jwt',
                 'ui.router',
-                'satellizer',
                 services_1.APP_SERVICES_BINDINGS
             ];
             ng_forward_1.bootstrap(app_1.App, [
@@ -34,4 +40,4 @@ System.register(['angular', 'angular-animate', 'angular-sanitize', 'angular-mate
         }
     }
 });
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYm9vdHN0cmFwLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiYm9vdHN0cmFwLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O1FBMEJNLGtCQUFrQjs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7WUFBbEIsa0JBQWtCLEdBQUc7Z0JBRXpCLFlBQVk7Z0JBQ1osV0FBVztnQkFDWCxZQUFZO2dCQUNaLFdBQVc7Z0JBQ1gsWUFBWTtnQkFHWixnQ0FBcUI7YUFDdEIsQ0FBQztZQU9GLHNCQUFTLENBQUMsU0FBRyxFQUFFO2dCQUNiLGtCQUFrQjthQUNuQixDQUFDLENBQUMifQ==
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYm9vdHN0cmFwLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiYm9vdHN0cmFwLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O1FBNkJNLGtCQUFrQjs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7WUFBbEIsa0JBQWtCLEdBQUc7Z0JBQ3pCLFlBQVk7Z0JBQ1osV0FBVztnQkFDWCxXQUFXO2dCQUNYLFlBQVk7Z0JBQ1osT0FBTztnQkFDUCxpQkFBaUI7Z0JBQ2pCLGFBQWE7Z0JBQ2IsV0FBVztnQkFFWCxnQ0FBcUI7YUFDdEIsQ0FBQztZQU9GLHNCQUFTLENBQUMsU0FBRyxFQUFFO2dCQUNiLGtCQUFrQjthQUNuQixDQUFDLENBQUMifQ==
