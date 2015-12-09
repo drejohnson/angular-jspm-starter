@@ -35,10 +35,10 @@ export default function OnRun(
 
     $log.log($state.current);
     // $log.log(fromState);
-    // if ($state.current.data !== undefined && !auth.isAuthenticated) {
-    //   $location.path('/connect');
-    //   $log.warn('REQUIRES LOGIN');
-    // }
+    if ($state.current.data !== undefined && !auth.isAuthenticated) {
+      $location.path('/connect');
+      $log.warn('REQUIRES LOGIN');
+    }
   });
 
   const stateChangeStart = $rootScope.$on('$stateChangeStart', (event, toState, toParams, fromState, fromParams) => {
