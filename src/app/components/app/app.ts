@@ -11,6 +11,7 @@ import Connect from '../connect/connect';
 import Profile from '../profile/profile';
 // import Logout from '../logout/logout';
 
+import MD_STYLES from 'angular-material/angular-material.css!';
 import STYLES from './app.css!';
 
 angular.module('app.core', [])
@@ -27,18 +28,18 @@ angular.module('app.core', [])
   pipes: [APP_PIPES],
   directives: [Sidenav, Toolbar],
   providers: ['app.core'],
-  bindings: [STYLES],
+  bindings: [MD_STYLES, STYLES],
   controllerAs: 'vm',
   // include our .html and .css file
   // styles: [STYLES],
   template: `
-  <div layout="row" layout-fill flex>
-     <sidenav layout="row"></sidenav>
-     <div layout="column" flex>
+    <div layout="row" layout-fill flex>
+      <sidenav layout="row"></sidenav>
+      <div layout="column" flex>
        <toolbar></toolbar>
        <md-content layout="column" flex ng-outlet></md-content>
-     </div>
-   </div>
+      </div>
+    </div>
   `
 })
 @StateConfig([
@@ -46,11 +47,22 @@ angular.module('app.core', [])
   { name: 'connect', url: '/connect', component: Connect },
   { name: 'profile', url: '/profile', component: Profile, data: { requiresLogin: true } }
 ])
-@Inject('$log')
+@Inject('PageTitleService', '$log')
 export class App {
   title: string;
-  constructor(public $log) {
+  constructor(public PageTitleService, public $log) {
     this.title = 'App';
     this.$log.log(`${this.title} component`);
   }
+  getTitle() {
+    return this.PageTitleService.getTitle();
+  }
+
+  // getMetaKeywords() {
+  //   return this.PageMetaService.getMetaKeywords();
+  // }
+  //
+  // getMetaDescription() {
+  //   return this.PageMetaService.getMetaDescription();
+  // }
 }

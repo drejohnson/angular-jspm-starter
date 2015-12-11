@@ -1,17 +1,18 @@
-/// <reference path="../../typings/_references.d.ts" />
+/// <reference path="../../typings/tsd.d.ts" />
 
 import {Injectable, Inject} from 'ng-forward';
 
 @Injectable()
 @Inject('$q', '$timeout')
 export class TestService {
-  name: string;
+  // name: string;
+  private title:string;
   constructor(private $q, private $timeout) {
-    this.name = 'Test Service';
+    this.title = 'Test Service';
   }
-  getValue() {
+  public getValue() {
     return this.$q(resolve => {
-      this.$timeout(() => resolve('Async ' + this.name), 3000);
+      this.$timeout(() => resolve('Async ' + this.title), 3000);
     });
   }
 }

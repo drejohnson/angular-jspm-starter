@@ -13,6 +13,35 @@ export default function OnConfig(
   jwtInterceptorProvider) {
   // Config block
 
+  // $httpProvider.interceptors.push(($rootScope, $q, $window, $injector, $location) => {
+  //   return {
+  //     request(config) {
+  //       const TokenModel = $injector.get($window.localStorage.token);
+  //       const token = TokenModel.get();
+  //       if ($window.localStorage.token) {
+  //         config.headers = config.headers || {};
+  //         config.headers.Authorization = 'Bearer ' + $window.localStorage.token;
+  //       }
+  //       return config;
+  //     },
+  //     responseError(rejection) {
+  //       switch (rejection.status) {
+  //         case 401:
+  //           // injected manually to get around circular dependency problem
+  //           const TokenModel = $injector.get($window.localStorage.token);
+  //           TokenModel.remove();
+  //           $location.path('/');
+  //           break;
+  //         case 403:
+  //           $location.path('/403');
+  //           break;
+  //       }
+  //
+  //       return $q.reject(rejection);
+  //     }
+  //   };
+  // });
+
   authProvider.init({
     domain: AUTH0_DOMAIN,
     clientID: AUTH0_CLIENT_ID,
@@ -41,6 +70,7 @@ export default function OnConfig(
     'A200': '#909090',
     'A400': '#464646',
     'A700': '#191919',
+    'hue-1': '600',
     'contrastDefaultColor': 'light',
     'contrastDarkColors': '50 100 200 A100',
     'contrastStrongLightColors': '300 400 A200 A400'

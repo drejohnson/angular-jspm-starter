@@ -1,4 +1,4 @@
-/// <reference path="../typings/_references.d.ts" />
+/// <reference path="../typings/tsd.d.ts" />
 
 import 'reflect-metadata';
 import 'angular';

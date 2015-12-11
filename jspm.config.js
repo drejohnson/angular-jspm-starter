@@ -32,13 +32,13 @@ System.config({
 
   map: {
     "@reactivex/rxjs": "npm:@reactivex/rxjs@5.0.0-alpha.8",
-    "angular": "github:angular/bower-angular@1.5.0-beta.2",
-    "angular-animate": "github:angular/bower-angular-animate@1.5.0-beta.2",
-    "angular-cookies": "github:angular/bower-angular-cookies@1.5.0-beta.2",
+    "angular": "github:angular/bower-angular@1.5.0-rc.0",
+    "angular-animate": "github:angular/bower-angular-animate@1.5.0-rc.0",
+    "angular-cookies": "github:angular/bower-angular-cookies@1.5.0-rc.0",
     "angular-jwt": "npm:angular-jwt@0.0.9",
-    "angular-material": "github:angular/bower-material@1.0.0-rc6",
-    "angular-mocks": "npm:angular-mocks@1.5.0-beta.2",
-    "angular-sanitize": "github:angular/bower-angular-sanitize@1.5.0-beta.2",
+    "angular-material": "github:angular/bower-material@1.0.0-rc7",
+    "angular-mocks": "npm:angular-mocks@1.5.0-rc.0",
+    "angular-sanitize": "github:angular/bower-angular-sanitize@1.5.0-rc.0",
     "angular-storage": "npm:angular-storage@0.0.13",
     "angular-ui-router": "github:angular-ui/ui-router@0.2.15",
     "auth0-angular": "npm:auth0-angular@4.0.4",
@@ -49,32 +49,32 @@ System.config({
     "es6-shim": "github:es-shims/es6-shim@0.33.10",
     "jspm-loader-css": "npm:jspm-loader-css@1.0.1-beta1",
     "lost": "npm:lost@6.6.2",
-    "ng-forward": "npm:ng-forward@0.0.1-alpha.10",
+    "ng-forward": "npm:ng-forward@0.0.1-alpha.11",
     "postcss": "npm:postcss@5.0.10",
     "postcss-calc": "npm:postcss-calc@5.0.0",
     "precss": "npm:precss@1.3.0",
     "reflect-metadata": "npm:reflect-metadata@0.1.2",
     "satellizer": "npm:satellizer@0.13.1",
     "text": "github:systemjs/plugin-text@0.0.3",
-    "ts": "github:frankwallis/plugin-typescript@2.2.1",
+    "ts": "github:frankwallis/plugin-typescript@2.4.0",
     "typescript": "npm:typescript@1.7.3",
     "zone.js": "npm:zone.js@0.5.8",
     "github:angular-ui/ui-router@0.2.15": {
-      "angular": "github:angular/bower-angular@1.5.0-beta.2"
+      "angular": "github:angular/bower-angular@1.5.0-rc.0"
     },
-    "github:angular/bower-angular-animate@1.5.0-beta.2": {
-      "angular": "github:angular/bower-angular@1.5.0-beta.2"
+    "github:angular/bower-angular-animate@1.5.0-rc.0": {
+      "angular": "github:angular/bower-angular@1.5.0-rc.0"
     },
-    "github:angular/bower-angular-aria@1.5.0-beta.2": {
-      "angular": "github:angular/bower-angular@1.5.0-beta.2"
+    "github:angular/bower-angular-aria@1.5.0-rc.0": {
+      "angular": "github:angular/bower-angular@1.5.0-rc.0"
     },
-    "github:angular/bower-angular-sanitize@1.5.0-beta.2": {
-      "angular": "github:angular/bower-angular@1.5.0-beta.2"
+    "github:angular/bower-angular-sanitize@1.5.0-rc.0": {
+      "angular": "github:angular/bower-angular@1.5.0-rc.0"
     },
-    "github:angular/bower-material@1.0.0-rc6": {
-      "angular": "github:angular/bower-angular@1.5.0-beta.2",
-      "angular-animate": "github:angular/bower-angular-animate@1.5.0-beta.2",
-      "angular-aria": "github:angular/bower-angular-aria@1.5.0-beta.2",
+    "github:angular/bower-material@1.0.0-rc7": {
+      "angular": "github:angular/bower-angular@1.5.0-rc.0",
+      "angular-animate": "github:angular/bower-angular-animate@1.5.0-rc.0",
+      "angular-aria": "github:angular/bower-angular-aria@1.5.0-rc.0",
       "css": "github:systemjs/plugin-css@0.1.19"
     },
     "github:capaj/jspm-hot-reloader@0.3.0": {
@@ -82,7 +82,7 @@ System.config({
       "socket.io-client": "github:socketio/socket.io-client@1.3.7",
       "weakee": "npm:weakee@0.9.1"
     },
-    "github:frankwallis/plugin-typescript@2.2.1": {
+    "github:frankwallis/plugin-typescript@2.4.0": {
       "typescript": "npm:typescript@1.7.3"
     },
     "github:jspm/nodelibs-assert@0.1.0": {
@@ -519,7 +519,7 @@ System.config({
       "brace-expansion": "npm:brace-expansion@1.1.1",
       "path": "github:jspm/nodelibs-path@0.1.0"
     },
-    "npm:ng-forward@0.0.1-alpha.10": {
+    "npm:ng-forward@0.0.1-alpha.11": {
       "@reactivex/rxjs": "npm:@reactivex/rxjs@5.0.0-alpha.8",
       "crypto": "github:jspm/nodelibs-crypto@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2",

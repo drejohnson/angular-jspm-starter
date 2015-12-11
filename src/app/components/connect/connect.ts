@@ -1,4 +1,4 @@
-import { Component, Inject } from 'ng-forward';
+import { Component, Inject, Resolve } from 'ng-forward';
 import html from '../../common/template';
 import TEMPLATE from './connect.html!text';
 import STYLES from './connect.css!';
@@ -23,6 +23,16 @@ import STYLES from './connect.css!';
 export default class Connect {
   title: string;
   connect: any;
+
+  @Resolve()
+  @Inject('PageTitleService', 'PageMetaTagsService')
+  static setTags(PageTitleService, PageMetaTagsService) {
+    return {
+      title: PageTitleService.setTitle('Connect'),
+      description: PageMetaTagsService.setMetaDescription('This is connect page description'),
+      image: PageMetaTagsService.setMetaImage('/images/logos/logo-red.svg')
+    };
+  }
   constructor(public $http, public auth, public store, public $location, public $log) {
     this.title = 'Connect';
     // On load

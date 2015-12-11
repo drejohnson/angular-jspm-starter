@@ -8,7 +8,7 @@ const LOG = new WeakMap();
 @Injectable()
 @Inject('$http', '$log')
 class VideosService {
-  constructor($http, $log) {
+  constructor(private $http, private $log) {
     HTTP.set(this, $http);
     LOG.set(this, $log);
     this.apiHost = '/api';

@@ -4,7 +4,7 @@
       <img src="/images/logos/logo-animated.svg" alt="Logo">
     </a>
   </header>
-  <md-content flex>
+  <md-content class="md-hue-1" flex>
     <nav class="nav" role="navigation">
       <span
         class="nav-container"
@@ -27,16 +27,23 @@
           ui-sref-active="active">
           {{ ::item.name }}
         </a>
+        <!-- Remove when done testing -->
+        <a
+          class="nav-item"
+          ui-sref="profile"
+          ui-sref-active="active">
+          Profile
+        </a>
       </span>
       <!-- <section ng-repeat="section in vm.menu.sections" ui-sref-active="active">
         <menu-toggle class="menu-toggle" section="section" ng-if="section.type === 'toggle'"></menu-toggle>
         <menu-link class="menu-link" section="section" ng-if="section.type === 'link'"></menu-link>
-      </section>
+      </section> -->
       <section class="nav-footer">
         <a href="http://tomorrowpictures.com">
           <img src="/images/logos/tpi-logo.svg" alt="Tomorrow Pictures Inc.">
         </a>
-      </section> -->
+      </section>
     </nav>
   </md-content>
 </md-sidenav>

@@ -1,4 +1,4 @@
-import { Component, Inject } from 'ng-forward';
+import { Component, Inject, Resolve } from 'ng-forward';
 import html from '../../common/template';
 import TEMPLATE from './home.html!text';
 import STYLES from './home.css!';
@@ -18,13 +18,23 @@ import STYLES from './home.css!';
   styles: [],
   template: TEMPLATE
 })
-@Inject('TestService', '$log')
+@Inject('PageTitleService', 'TestService', '$log')
 // Home Controller
 export default class Home {
-  title: string;
-  num: string;
-  constructor(public TestService, public $log) {
-    this.title = 'Home';
+  public title:string;
+  public desc:string;
+  public num:string;
+  @Resolve()
+  @Inject('PageTitleService', 'PageMetaTagsService')
+  static setTags(PageTitleService, PageMetaTagsService) {
+    return {
+      title: PageTitleService.setTitle('Home'),
+      description: PageMetaTagsService.setMetaDescription('This is home page description'),
+      image: PageMetaTagsService.setMetaImage('/images/logos/logo-red.svg')
+    };
+  }
+  constructor(private PageTitleService, private TestService, private $log) {
+    this.title = PageTitleService.getTitle();
     // On load
     this.resolve();
   }

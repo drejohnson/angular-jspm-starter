@@ -9,7 +9,6 @@ sidenav {
     width: 150px;
     min-width: 150px;
     max-width: 150px;
-    background-color: #1d1d1d;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   }
 
