@@ -2,6 +2,7 @@ import { Component, Inject, Resolve } from 'ng-forward';
 import html from '../../common/template';
 import TEMPLATE from './connect.html!text';
 import STYLES from './connect.css!';
+import ANIMATE_CSS from 'animate.css/animate.css!'
 
 /*
  * App Component
@@ -13,7 +14,7 @@ import STYLES from './connect.css!';
   selector: 'connect',
   directives: [],
   providers: [],
-  bindings: [STYLES],
+  bindings: [ANIMATE_CSS, STYLES],
   controllerAs: 'vm',
   // include our .html and .css file
   styles: [],

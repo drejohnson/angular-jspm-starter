@@ -36,11 +36,12 @@ System.config({
     "angular-animate": "github:angular/bower-angular-animate@1.5.0-rc.0",
     "angular-cookies": "github:angular/bower-angular-cookies@1.5.0-rc.0",
     "angular-jwt": "npm:angular-jwt@0.0.9",
-    "angular-material": "github:angular/bower-material@1.0.0-rc7",
+    "angular-material": "github:angular/bower-material@1.0.0",
     "angular-mocks": "npm:angular-mocks@1.5.0-rc.0",
     "angular-sanitize": "github:angular/bower-angular-sanitize@1.5.0-rc.0",
     "angular-storage": "npm:angular-storage@0.0.13",
     "angular-ui-router": "github:angular-ui/ui-router@0.2.15",
+    "animate.css": "github:daneden/animate.css@3.5.0",
     "auth0-angular": "npm:auth0-angular@4.0.4",
     "autoprefixer": "npm:autoprefixer@6.1.0",
     "capaj/jspm-hot-reloader": "github:capaj/jspm-hot-reloader@0.3.0",
@@ -71,7 +72,7 @@ System.config({
     "github:angular/bower-angular-sanitize@1.5.0-rc.0": {
       "angular": "github:angular/bower-angular@1.5.0-rc.0"
     },
-    "github:angular/bower-material@1.0.0-rc7": {
+    "github:angular/bower-material@1.0.0": {
       "angular": "github:angular/bower-angular@1.5.0-rc.0",
       "angular-animate": "github:angular/bower-angular-animate@1.5.0-rc.0",
       "angular-aria": "github:angular/bower-angular-aria@1.5.0-rc.0",

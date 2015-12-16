@@ -61,14 +61,13 @@ sidenav .nav a {
     text-decoration: none;
 }
 
-sidenav .nav .nav-container {
+sidenav .nav .nav-item {
 
-    min-height: 63px;
-}
-
-sidenav .nav .nav-label, sidenav .nav .nav-item {
+    position: relative;
 
     color: #ecf0f1;
+
+    font-size: 0.875rem;
 
     font-weight: normal;
 
@@ -76,23 +75,9 @@ sidenav .nav .nav-label, sidenav .nav .nav-item {
 
     text-transform: uppercase;
 
-    display: -webkit-flex;
+    display: block;
 
-    display: -ms-flexbox;
-
-    display: flex;
-
-    -webkit-flex-direction: row;
-
-        -ms-flex-direction: row;
-
-            flex-direction: row;
-
-    -webkit-align-items: flex-start;
-
-        -ms-flex-align: start;
-
-            align-items: flex-start;
+    overflow: hidden;
 
     padding: 1.25rem .8rem;
 
@@ -105,9 +90,14 @@ sidenav .nav .nav-label, sidenav .nav .nav-item {
     transition-duration: .5s;
 
     transition-timing-function: linear;
+
+    /*&.ng-enter,
+      &.ng-enter {
+        transition: all 0.3s ease-in-out;
+      }*/
 }
 
-sidenav .nav .nav-label.active, sidenav .nav .nav-label:hover, sidenav .nav .nav-item.active, sidenav .nav .nav-item:hover {
+sidenav .nav .nav-item.active, sidenav .nav .nav-item:hover {
 
     background-color: #111111;
 }

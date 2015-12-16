@@ -1,23 +1,25 @@
 {
 	"compilerOptions": {
-    "target": "es5",
+		"target": "es5",
 		"module": "system",
-    "declaration": false,
-    "noImplicitAny": false,
-    "removeComments": true,
-    "noLib": false,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
+		"declaration": false,
+		"noImplicitAny": false,
+		"removeComments": true,
+		"noLib": false,
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
 		"experimentalAsyncFunctions": true,
 		"inlineSourceMap": true
 	},
-  "files": [
-		"./app/bootstrap.ts"
+	"files": [
+		"typings/tsd.d.ts",
+		"app/bootstrap.ts"
 	],
 	"exclude": [
 		"gulpfile.babel.js",
 		"dist",
 		"client/jspm_packages",
 		"node_modules"
-  ]
+	],
+	"compileOnSave": false
 }

@@ -98,7 +98,7 @@ export const getFeatured = (req, res) => {
 // Get channel: Related
 export const getRelated = (req, res) => {
   const item = prismic.withContext(req, res);
-  const id = req.params['id'];
+  const id = req.params.id;
   item.getByID(id, () => {
     item.query(
       prismic.Predicates.similar(id, 10), {
@@ -112,8 +112,8 @@ export const getRelated = (req, res) => {
 
 // Get single Video
 export const getVideo = (req, res) => {
+  const id = req.params.id;
   const item = prismic.withContext(req, res);
-  const id = req.params['id'];
   item.getByID(id, (err, data) => {
     const html = data.getStructuredText('video.content').asHtml();
     // res.status(200).json(data);
@@ -127,7 +127,7 @@ export const getVideo = (req, res) => {
 // Get Search results
 export const getSearch = (req, res) => {
   const item = prismic.withContext(req, res);
-  const q = req.params['q'];
+  const q = req.params.q;
   item.query(
     '[[:d = fulltext(document, "' + q + '")]]', {
     // prismic.Predicates.any('my.video.channel', ['lifestyle']), {
@@ -152,7 +152,7 @@ export const getPosts = (req, res) => {
 // Get single Post
 export const getPost = (req, res) => {
   const item = prismic.withContext(req, res);
-  const id = req.params['id'];
+  const id = req.params.id;
   item.getByID(id, (err, data) => {
     const html = data.getStructuredText('blog.body').asHtml();
     // res.status(200).json(data);
@@ -177,7 +177,7 @@ export const getAudioList = (req, res) => {
 // Get single Audio Post
 export const getAudioDetail = (req, res) => {
   const item = prismic.withContext(req, res);
-  const id = req.params['id'];
+  const id = req.params.id;
   item.getByID(id, (err, data) => {
     // res.status(200).json(data);
     res.status(200).json([

@@ -39,7 +39,6 @@ connect {
     .tagline {
       margin-top: -26px;
       margin-right: var(--xlg-pad);
-      /*border-bottom: 3px solid var(--brandWhite);*/
       h3 {
         line-height: 1.5;
         text-transform: uppercase;
@@ -53,15 +52,12 @@ connect {
       header {
         width: 200px;
         background-color: var(--brandWhite);
-        /*border-radius: 300px;*/
         margin-bottom: var(--md-pad);
         overflow: hidden;
       }
       .logo {
         display: block;
         width: 200px;
-
-        /*margin: 0 auto;*/
       }
       .connect-button {
         font-weight: 700;

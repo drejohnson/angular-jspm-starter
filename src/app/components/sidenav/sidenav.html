@@ -6,40 +6,19 @@
   </header>
   <md-content class="md-hue-1" flex>
     <nav class="nav" role="navigation">
-      <span
-        class="nav-container"
-        ng-if="vm.section[0].type === 'toggle'"
-        ng-class="{'': !toggled, 'opened active': toggled}"
-        flex layout="column">
-        <a
-          class="nav-label"
-        	ng-click="toggled=!toggled"
-        	flex layout="row">
-          {{ ::vm.section[0].name }}
-          <md-icon ng-if="!toggled" aria-label="Menu" class="material-icons">expand_more</md-icon>
-	        <md-icon ng-if="toggled" aria-label="Close" class="material-icons">expand_less</md-icon>
-        </a>
-        <a
-          class="nav-item"
-          ng-if="toggled"
-          ng-repeat="item in vm.section[0].routes"
-          ui-sref="{{::item.state}}"
-          ui-sref-active="active">
-          {{ ::item.name }}
-        </a>
-        <!-- Remove when done testing -->
-        <a
-          class="nav-item"
-          ui-sref="profile"
-          ui-sref-active="active">
-          Profile
-        </a>
-      </span>
+      <a
+        class="nav-item"
+        ng-repeat="item in vm.sections"
+        ui-sref="{{::item.state}}"
+        ui-sref-active="active">
+        {{ ::item.name }}
+      </a>
       <!-- <section ng-repeat="section in vm.menu.sections" ui-sref-active="active">
         <menu-toggle class="menu-toggle" section="section" ng-if="section.type === 'toggle'"></menu-toggle>
         <menu-link class="menu-link" section="section" ng-if="section.type === 'link'"></menu-link>
       </section> -->
       <section class="nav-footer">
+        <a href="#" menu-toggle [options]="vm.options" (option-select)="vm.optionSelected($event)"></a>
         <a href="http://tomorrowpictures.com">
           <img src="/images/logos/tpi-logo.svg" alt="Tomorrow Pictures Inc.">
         </a>

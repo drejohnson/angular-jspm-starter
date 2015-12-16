@@ -57,12 +57,4 @@ export class App {
   getTitle() {
     return this.PageTitleService.getTitle();
   }
-
-  // getMetaKeywords() {
-  //   return this.PageMetaService.getMetaKeywords();
-  // }
-  //
-  // getMetaDescription() {
-  //   return this.PageMetaService.getMetaDescription();
-  // }
 }

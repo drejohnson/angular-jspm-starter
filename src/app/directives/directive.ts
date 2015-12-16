@@ -1,13 +1,7 @@
-import Toolbar from './toolbar/toolbar';
-import Sidenav from './sidenav/sidenav';
-import Home from './home/home';
-// import { About } from './about/about';
 
-const APP_COMPONENTS = [
-  Sidenav,
-  Toolbar,
-  Home,
-  // About
+
+const APP_DIRECTIVES = [
+
 ];
 
-export default APP_COMPONENTS;
+export default APP_DIRECTIVES;

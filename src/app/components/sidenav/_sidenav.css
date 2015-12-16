@@ -31,30 +31,29 @@ sidenav {
     a {
       text-decoration: none;
     }
-    .nav-container {
-      min-height: 63px;
-    }
-    .nav-label,
     .nav-item {
+      position: relative;
       color: var(--brandWhite);
+      font-size: calc(14/16)rem;
       font-weight: normal;
       text-align: left;
       text-transform: uppercase;
-      display: flex;
-      flex-direction: row;
-      align-items: flex-start;
+      display: block;
+      overflow: hidden;
       padding: var(--lg-pad) var(--sm-pad);
       border-bottom: 1px solid #252525;
       cursor: pointer;
       transition-property: background-color;
       transition-duration: .5s;
       transition-timing-function: linear;
-
       &.active,
       &:hover {
         background-color: var(--brandBlack);
       }
-
+      /*&.ng-enter,
+      &.ng-enter {
+        transition: all 0.3s ease-in-out;
+      }*/
     }
   }
   .nav-footer {

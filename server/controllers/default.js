@@ -9,7 +9,6 @@ export const getCatchAll = (req, res) => {
   if (req.xhr) {
     return res.status(404).send(req.url + ' not found');
   }
-
   // `sendfile` requires the safe, resolved path to your AngularJS app
   res.render('index');
 };

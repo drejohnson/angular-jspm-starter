@@ -8,14 +8,13 @@ import compression from 'compression';
 import cors from 'cors';
 import errorHandler from 'errorhandler';
 import express from 'express';
-import jwt from 'express-jwt';
 import expressValidator from 'express-validator';
 import favicon from 'serve-favicon';
 import logger from 'morgan';
 import methodOverride from 'method-override';
 import mongoose from 'mongoose';
-// import prerender from 'prerender-node';
-// import prismicio from 'express-prismic';
+import prerender from 'prerender-node';
+import prismicio from 'express-prismic';
 import redis from 'redis';
 import dotenv from 'dotenv';
 
@@ -23,7 +22,7 @@ dotenv.load();
 
 import config from './config';
 import Configuration from './config/prismic-configuration';
-import authenticate from './middleware/authenticated';
+// import authenticate from './middleware/authenticated';
 /**
  * Controllers (route handlers).
  */
@@ -34,11 +33,11 @@ const client = redis.createClient(6379, 'redis');
 client.on('connect', () => {
   console.log('Redis connected');
 });
-// prerender.set('beforeRender', (req, done) => {
-//   client.get(req.url, done);
-// }).set('afterRender', (err, req, prerender_res) => {
-//   client.set(req.url, prerender_res.body);
-// });
+prerender.set('beforeRender', (req, done) => {
+  client.get(req.url, done);
+}).set('afterRender', (err, req, prerender_res) => {
+  client.set(req.url, prerender_res.body);
+});
 
 /**
  * Create Express server.
@@ -49,6 +48,9 @@ mongoose.connection.on('error', () => {
   console.log('MongoDB Connection Error. Please make sure that MongoDB is running.'.red);
   // process.exit(1);
 });
+
+const prismic = prismicio.Prismic;
+prismic.init(Configuration);
 
 // all environments
 app.set('views', path.join(__dirname, 'views'));
@@ -61,6 +63,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(expressValidator());
 app.use(methodOverride());
 app.use(cookieParser());
+app.use(prerender.set('prerenderToken', 'EgrEFN6gzEfePRxtW4zh'));
 
 const staticOptions = {
   dotfiles: 'ignore',
@@ -80,9 +83,11 @@ const staticOptions = {
 
 app.use('/', express.static(path.join(__dirname, '../static'), staticOptions ));
 // uncomment after placing your favicon in /public
-// app.use(favicon(path.join(__dirname, 'static', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, '../static', 'favicon.ico')));
 
 app.use(errorHandler());
+
+app.set('json spaces', 2);
 
 const handleError = (res, err) => {
   if (err.status === 404) {
@@ -97,36 +102,26 @@ app.get('/', defaultController.getDefault);
 
 // API Routes
 app.get('/api', apiController.getApi);
-// app.get('/api/videos', apiController.getVideos);
-// app.get('/api/videos/:id', apiController.getVideo);
-// app.get('/api/featured', apiController.getFeatured);
-// app.get('/api/videos/channel/docu-series', apiController.getDocuSeries);
-// app.get('/api/videos/channel/radio-tv-film', apiController.getRadioTvFilm);
-// app.get('/api/videos/channel/music', apiController.getMusic);
-// app.get('/api/videos/channel/comedy', apiController.getComedy);
-// app.get('/api/videos/channel/lifestyle', apiController.getLifestyle);
-// app.get('/api/related/:id', apiController.getRelated);
-//
-// app.get('/api/posts', apiController.getPosts);
-// app.get('/api/posts/:id', apiController.getPost);
-//
-// app.get('/api/audio', apiController.getAudioList);
-// app.get('/api/audio/:id', apiController.getAudioDetail);
-//
-// app.get('/api/search/:q', apiController.getSearch);
-// app.get('/api/me', ensureAuthenticated, userController.getProfile);
-// app.put('/api/me', ensureAuthenticated, userController.updateProfile);
+app.get('/api/videos', apiController.getVideos);
+app.get('/api/videos/:id', apiController.getVideo);
+app.get('/api/featured', apiController.getFeatured);
+app.get('/api/videos/channel/docu-series', apiController.getDocuSeries);
+app.get('/api/videos/channel/radio-tv-film', apiController.getRadioTvFilm);
+app.get('/api/videos/channel/music', apiController.getMusic);
+app.get('/api/videos/channel/comedy', apiController.getComedy);
+app.get('/api/videos/channel/lifestyle', apiController.getLifestyle);
+app.get('/api/related/:id', apiController.getRelated);
 
-// OAuth authentication routes. (Sign in)
-// app.post('/auth/login', ensureAuthenticated, userController.authLogin);
-// app.post('/auth/signup', ensureAuthenticated, userController.authSignup);
-// app.post('/auth/facebook', ensureAuthenticated, userController.authFacebook);
-// app.post('/auth/twitter', ensureAuthenticated, userController.authTwitter);
-// app.post('/auth/google', ensureAuthenticated, userController.authGoogle);
-// app.post('/auth/unlink', ensureAuthenticated, userController.authUnlink);
+app.get('/api/posts', apiController.getPosts);
+app.get('/api/posts/:id', apiController.getPost);
+
+app.get('/api/audio', apiController.getAudioList);
+app.get('/api/audio/:id', apiController.getAudioDetail);
+
+app.get('/api/search/:q', apiController.getSearch);
 
 // Prismic Preview Route
-// app.route('/preview').get(prismic.preview);
+app.route('/preview').get(prismic.preview);
 
 app.get('/*', defaultController.getCatchAll);
 
