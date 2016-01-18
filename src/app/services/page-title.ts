@@ -10,7 +10,7 @@ interface IPageTitleService {
 @Injectable()
 @Inject()
 export class PageTitleService implements IPageTitleService {
-  private pageTitle:string;
+  pageTitle:string;
 
   constructor() {}
 

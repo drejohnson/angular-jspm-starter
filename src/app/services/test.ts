@@ -6,9 +6,9 @@ import {Injectable, Inject} from 'ng-forward';
 @Inject('$q', '$timeout')
 export class TestService {
   // name: string;
-  public title:string;
-  constructor(private $q, private $timeout) {}
-  
+  title:string;
+  constructor(public $q, public $timeout) {}
+
   public getValue() {
     this.title = 'Test Service';
     return this.$q(resolve => {

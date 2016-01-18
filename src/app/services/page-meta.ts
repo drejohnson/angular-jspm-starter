@@ -12,8 +12,8 @@ interface IPageMetaTagsService {
 @Injectable()
 @Inject()
 export class PageMetaTagsService implements IPageMetaTagsService {
-  public metaDescription:string;
-  public metaImage:string;
+  metaDescription: string;
+  metaImage: string;
 
   constructor() {}
 
