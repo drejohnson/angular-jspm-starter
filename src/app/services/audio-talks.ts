@@ -1,4 +1,4 @@
-/// <reference path="../typings/_references.d.ts" />
+/// <reference path="../../typings/tsd.d.ts" />
 
 import {Injectable, Inject} from 'ng-forward';
 
@@ -7,25 +7,27 @@ const LOG = new WeakMap();
 
 @Injectable()
 @Inject('$http', '$log')
-class MixtapesService {
-  constructor($http, $log) {
+class AudioTalksService {
+  constructor(public $http, public $log) {
     HTTP.set(this, $http);
     LOG.set(this, $log);
     this.apiHost = '/api';
-    this.name = 'Mixtapes Service';
+    this.name = 'AudioTalks Service';
   }
 
-  getAllMixtapes() {
+  getAllAudioTalks() {
     return HTTP.get(this).get(`${this.apiHost}/audio`)
       .then(results => results.data )
       .catch(err => LOG.get(this).log(err));
   }
 
-  getMixtape(id) {
+  getAudioTalk(id) {
     return HTTP.get(this).get(`${this.apiHost}/audio/${id}`)
       .then(results => results.data )
       .catch(err => LOG.get(this).log(err));
   }
 }
 
-export default MixtapesService;
+export const AUDIO_TALK_SERVICE_BINDINGS = [
+  AudioTalksService
+];

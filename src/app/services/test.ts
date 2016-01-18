@@ -6,11 +6,11 @@ import {Injectable, Inject} from 'ng-forward';
 @Inject('$q', '$timeout')
 export class TestService {
   // name: string;
-  private title:string;
-  constructor(private $q, private $timeout) {
-    this.title = 'Test Service';
-  }
+  public title:string;
+  constructor(private $q, private $timeout) {}
+  
   public getValue() {
+    this.title = 'Test Service';
     return this.$q(resolve => {
       this.$timeout(() => resolve('Async ' + this.title), 3000);
     });

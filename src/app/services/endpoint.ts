@@ -5,8 +5,8 @@ import {Injectable, Inject} from 'ng-forward';
 @Injectable()
 @Inject('$q')
 export class EndpointService {
-  private baseUri:string = "http://localhost:8080/api/";
-  private title:string;
+  public baseUri:string = "http://localhost:8080/api/";
+  public title:string;
 
   constructor() {}
 
