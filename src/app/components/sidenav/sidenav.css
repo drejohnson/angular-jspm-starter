@@ -89,7 +89,7 @@ sidenav .nav .nav-item {
 
     transition-duration: .5s;
 
-    transition-timing-function: linear;
+    transition-timing-function: linear
 
     /*&.ng-enter,
       &.ng-enter {

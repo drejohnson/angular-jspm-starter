@@ -124,7 +124,7 @@ function build() {
 
 // Browser-sync
 function serveDev() {
-  require('chokidar-socket-emitter')({port: 8081, path: 'src', relativeTo: 'src'});
+  // require('chokidar-socket-emitter')({port: 8081, path: 'src', relativeTo: 'src'});
   serve({
     port: process.env.PORT || 3000,
     open: false,

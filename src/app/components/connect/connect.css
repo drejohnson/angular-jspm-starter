@@ -17,7 +17,7 @@ connect .bg-cover {
   background-image: url("/images/bg-cover.jpg");
   background-size: cover;
   background-position: center center;
-  vertical-align: middle;
+  vertical-align: middle
 }
 
 connect .bg-cover:before {

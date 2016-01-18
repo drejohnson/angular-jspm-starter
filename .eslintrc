@@ -1,28 +1,10 @@
 {
-  "extends": [
-    "airbnb/base"
-  ],
+  "parser": "babel-eslint",
   "env": {
-    "browser": true,
-    "node": true,
     "es6": true
   },
-  "globals": {
-    "__DEV__": true,
-    "__SERVER__": true
-  },
-  "rules": {
-    "no-use-before-define": 0,
-    "block-scoped-var": 0,
-    "padded-blocks": 0,
-    "comma-dangle": 0,
-    "indent": [2, 2, {"SwitchCase": 1}],
-    "no-else-return": 1,
-    "no-param-reassign": 1,
-    "no-unused-vars": 1,
-    "no-sequences": 0,
-    "no-console": 1,
-    "dot-notation": 1,
-    "new-cap": 1
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
   }
 }
