@@ -7,6 +7,7 @@ import modRewrite from 'connect-modrewrite';
 import del from 'del';
 import autoprefixer from 'autoprefixer';
 import precss from 'precss';
+import colorFunction from 'postcss-color-function'
 import lost from 'lost';
 import calc from 'postcss-calc';
 import yargs from 'yargs';
@@ -78,6 +79,7 @@ function clean() {
 function styles() {
   const processors = [
     precss(),
+    colorFunction(),
     lost(),
     calc(),
     autoprefixer({browsers: ['last 2 version']})

@@ -7,6 +7,31 @@
     /* Typography */
 }
 
+sidenav ::-webkit-scrollbar {
+
+    width: .5rem;
+
+    height: .5rem;
+}
+
+sidenav ::-webkit-scrollbar-thumb {
+
+    background: #444;
+}
+
+sidenav ::-webkit-scrollbar-track {
+
+    background: $foreground-color);
+}
+
+sidenav // For Internet Explorer
+  body {
+
+    scrollbar-face-color: #444;
+
+    scrollbar-track-color: $foreground-color);
+}
+
 sidenav .md-sidenav-left {
 
     width: 150px;
@@ -106,15 +131,22 @@ sidenav .nav-footer {
 
     width: auto;
 
-    background-color: #1a1a1a;
-
     position: relative;
 
     bottom: 0;
 
+    margin: 5px;
+}
+
+sidenav .nav-footer a {
+
+    display: block;
+
+    background-color: #1a1a1a;
+
     padding: 5px;
 
-    margin: 5px;
+    margin-bottom: 5px;
 }
 
 @media (min-width: 960px) {
